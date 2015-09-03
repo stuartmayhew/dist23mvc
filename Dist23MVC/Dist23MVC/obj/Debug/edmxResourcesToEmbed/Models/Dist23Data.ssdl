@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aaphones2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CommHeaders">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommKey" Type="nchar" MaxLength="10" />
+    <Property Name="CommHeader" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="CommLinks">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommKey" Type="nchar" MaxLength="10" />
+    <Property Name="LinkText" Type="varchar" MaxLength="1500" />
+    <Property Name="LinkTitle" Type="varchar" MaxLength="50" />
+    <Property Name="Link" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'aaphones2.billwilson12.CommNames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CommNames">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommKey" Type="nchar" MaxLength="10" />
+    <Property Name="CommName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailKey" Type="int" />
+    <Property Name="GroupName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Header" Type="varchar" MaxLength="255" />
+    <Property Name="NewsText" Type="varchar(max)" />
+    <Property Name="NewsLink" Type="varchar" MaxLength="128" />
+    <Property Name="LinkText" Type="varchar" MaxLength="50" />
+    <Property Name="EventKey" Type="int" />
+    <Property Name="ListOrder" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'aaphones2.dbo.dayorder' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="dayorder">
+          <Property Name="sOrder" Type="int" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" />
+        </EntityType>-->
+  <EntityType Name="events">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventCat" Type="nvarchar" MaxLength="255" />
+    <Property Name="EventName" Type="nvarchar" MaxLength="255" />
+    <Property Name="EventLink" Type="nvarchar" MaxLength="255" />
+    <Property Name="EventLinkText" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="links">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LinkText" Type="nvarchar" MaxLength="255" />
+    <Property Name="LinkURL" Type="nvarchar" MaxLength="255" />
+    <Property Name="ListOrder" Type="int" />
+    <Property Name="LinkComment" Type="varchar" MaxLength="255" />
+    <Property Name="target" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="locations">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="MapUIRL" Type="nvarchar" MaxLength="255" />
+    <Property Name="EmbedURL" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="nchar" MaxLength="10" />
+    <Property Name="level" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="meetings">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DAY" Type="nvarchar" MaxLength="255" />
+    <Property Name="TIME" Type="nvarchar" MaxLength="255" />
+    <Property Name="TYPE" Type="nvarchar" MaxLength="255" />
+    <Property Name="TOPIC" Type="nvarchar" MaxLength="255" />
+    <Property Name="aaGROUP" Type="nvarchar" MaxLength="255" />
+    <Property Name="LOCATION" Type="nvarchar" MaxLength="255" />
+    <Property Name="CITY" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="News1">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Header" Type="nvarchar(max)" />
+    <Property Name="NewsText" Type="nvarchar(max)" />
+    <Property Name="NewsLink" Type="nvarchar(max)" />
+    <Property Name="LinkText" Type="nvarchar(max)" />
+    <Property Name="EventKey" Type="int" Nullable="false" />
+    <Property Name="ListOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="phonelist">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nchar" MaxLength="50" />
+    <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" />
+    <Property Name="LastServed" Type="date" />
+    <Property Name="SobDate" Type="date" />
+    <Property Name="Jail" Type="bit" />
+    <Property Name="TwStep" Type="bit" />
+    <Property Name="Ride" Type="bit" />
+    <Property Name="Phonelist" Type="bit" />
+    <Property Name="AttendWorkshop" Type="bit" />
+    <Property Name="Treatment" Type="bit" />
+    <Property Name="SpecialEvents" Type="bit" />
+    <Property Name="City" Type="nvarchar" MaxLength="255" />
+    <Property Name="HomeGroup" Type="varchar" MaxLength="128" />
+    <Property Name="Speaker" Type="bit" />
+    <Property Name="GoogleVoice" Type="bit" />
+    <Property Name="Daphne" Type="bit" />
+    <Property Name="Fairhope" Type="bit" />
+    <Property Name="County" Type="bit" />
+    <Property Name="onHold" Type="bit" />
+  </EntityType>
+  <EntityType Name="phonelistcurr">
+    <Key>
+      <PropertyRef Name="pKey" />
+    </Key>
+    <Property Name="pKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nchar" MaxLength="50" />
+    <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Gender" Type="nchar" MaxLength="1" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EmailSent" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'aaphones2.billwilson12.vw_meetingswloc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_meetingswloc">
+          <Property Name="sOrder" Type="int" />
+          <Property Name="DAY" Type="nvarchar" MaxLength="255" />
+          <Property Name="TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="TYPE" Type="nvarchar" MaxLength="255" />
+          <Property Name="TOPIC" Type="nvarchar" MaxLength="255" />
+          <Property Name="aaGROUP" Type="nvarchar" MaxLength="255" />
+          <Property Name="LOCATION" Type="nvarchar" MaxLength="255" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmbedURL" Type="nvarchar" MaxLength="400" />
+          <Property Name="MapUIRL" Type="nvarchar" MaxLength="255" />
+          <Property Name="convTime" Type="datetime" />
+        </EntityType>-->
+  <EntityContainer Name="aaphones2ModelStoreContainer">
+    <EntitySet Name="CommHeaders" EntityType="Self.CommHeaders" Schema="billwilson12" store:Type="Tables" />
+    <EntitySet Name="CommLinks" EntityType="Self.CommLinks" Schema="billwilson12" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="billwilson12" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="billwilson12" store:Type="Tables" />
+    <EntitySet Name="events" EntityType="Self.events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="links" EntityType="Self.links" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="locations" EntityType="Self.locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="meetings" EntityType="Self.meetings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News1" EntityType="Self.News1" Schema="dbo" Table="News" store:Type="Tables" />
+    <EntitySet Name="phonelist" EntityType="Self.phonelist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phonelistcurr" EntityType="Self.phonelistcurr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommNames" EntityType="Self.CommNames" store:Type="Tables" store:Schema="billwilson12">
+      <DefiningQuery>SELECT 
+    [CommNames].[pKey] AS [pKey], 
+    [CommNames].[CommKey] AS [CommKey], 
+    [CommNames].[CommName] AS [CommName]
+    FROM [billwilson12].[CommNames] AS [CommNames]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

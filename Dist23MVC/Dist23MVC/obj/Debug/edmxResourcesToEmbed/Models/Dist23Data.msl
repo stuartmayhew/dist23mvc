@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="aaphones2ModelStoreContainer" CdmEntityContainer="aaphones2Entities">
+    <EntitySetMapping Name="CommHeaders">
+      <EntityTypeMapping TypeName="aaphones2Model.CommHeader">
+        <MappingFragment StoreEntitySet="CommHeaders">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="CommKey" ColumnName="CommKey" />
+          <ScalarProperty Name="CommHeader1" ColumnName="CommHeader" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommLinks">
+      <EntityTypeMapping TypeName="aaphones2Model.CommLink">
+        <MappingFragment StoreEntitySet="CommLinks">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="CommKey" ColumnName="CommKey" />
+          <ScalarProperty Name="LinkText" ColumnName="LinkText" />
+          <ScalarProperty Name="LinkTitle" ColumnName="LinkTitle" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="aaphones2Model.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="emailKey" ColumnName="emailKey" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="aaphones2Model.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="NewsText" ColumnName="NewsText" />
+          <ScalarProperty Name="NewsLink" ColumnName="NewsLink" />
+          <ScalarProperty Name="LinkText" ColumnName="LinkText" />
+          <ScalarProperty Name="EventKey" ColumnName="EventKey" />
+          <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="events">
+      <EntityTypeMapping TypeName="aaphones2Model.event">
+        <MappingFragment StoreEntitySet="events">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="EventCat" ColumnName="EventCat" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="EventLink" ColumnName="EventLink" />
+          <ScalarProperty Name="EventLinkText" ColumnName="EventLinkText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="links">
+      <EntityTypeMapping TypeName="aaphones2Model.link">
+        <MappingFragment StoreEntitySet="links">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="LinkText" ColumnName="LinkText" />
+          <ScalarProperty Name="LinkURL" ColumnName="LinkURL" />
+          <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+          <ScalarProperty Name="LinkComment" ColumnName="LinkComment" />
+          <ScalarProperty Name="target" ColumnName="target" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locations">
+      <EntityTypeMapping TypeName="aaphones2Model.location">
+        <MappingFragment StoreEntitySet="locations">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="Location1" ColumnName="Location" />
+          <ScalarProperty Name="MapUIRL" ColumnName="MapUIRL" />
+          <ScalarProperty Name="EmbedURL" ColumnName="EmbedURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="aaphones2Model.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="meetings">
+      <EntityTypeMapping TypeName="aaphones2Model.meeting">
+        <MappingFragment StoreEntitySet="meetings">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="DAY" ColumnName="DAY" />
+          <ScalarProperty Name="TIME" ColumnName="TIME" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="TOPIC" ColumnName="TOPIC" />
+          <ScalarProperty Name="aaGROUP" ColumnName="aaGROUP" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="CITY" ColumnName="CITY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News1">
+      <EntityTypeMapping TypeName="aaphones2Model.News1">
+        <MappingFragment StoreEntitySet="News1">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="NewsText" ColumnName="NewsText" />
+          <ScalarProperty Name="NewsLink" ColumnName="NewsLink" />
+          <ScalarProperty Name="LinkText" ColumnName="LinkText" />
+          <ScalarProperty Name="EventKey" ColumnName="EventKey" />
+          <ScalarProperty Name="ListOrder" ColumnName="ListOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phonelists">
+      <EntityTypeMapping TypeName="aaphones2Model.phonelist">
+        <MappingFragment StoreEntitySet="phonelist">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="LastServed" ColumnName="LastServed" />
+          <ScalarProperty Name="SobDate" ColumnName="SobDate" />
+          <ScalarProperty Name="Jail" ColumnName="Jail" />
+          <ScalarProperty Name="TwStep" ColumnName="TwStep" />
+          <ScalarProperty Name="Ride" ColumnName="Ride" />
+          <ScalarProperty Name="Phonelist1" ColumnName="Phonelist" />
+          <ScalarProperty Name="AttendWorkshop" ColumnName="AttendWorkshop" />
+          <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+          <ScalarProperty Name="SpecialEvents" ColumnName="SpecialEvents" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="HomeGroup" ColumnName="HomeGroup" />
+          <ScalarProperty Name="Speaker" ColumnName="Speaker" />
+          <ScalarProperty Name="GoogleVoice" ColumnName="GoogleVoice" />
+          <ScalarProperty Name="Daphne" ColumnName="Daphne" />
+          <ScalarProperty Name="Fairhope" ColumnName="Fairhope" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="onHold" ColumnName="onHold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="phonelistcurrs">
+      <EntityTypeMapping TypeName="aaphones2Model.phonelistcurr">
+        <MappingFragment StoreEntitySet="phonelistcurr">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommNames">
+      <EntityTypeMapping TypeName="aaphones2Model.CommName">
+        <MappingFragment StoreEntitySet="CommNames">
+          <ScalarProperty Name="pKey" ColumnName="pKey" />
+          <ScalarProperty Name="CommKey" ColumnName="CommKey" />
+          <ScalarProperty Name="CommName1" ColumnName="CommName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

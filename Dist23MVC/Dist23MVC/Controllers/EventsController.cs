@@ -131,7 +131,7 @@ namespace Dist23MVC.Controllers
                 }
             }
 
-            return RedirectToAction("EventsEdit" + "/" + Session["currEventKey"].ToString());
+            return RedirectToAction("EventsEdit/" + Session["currEventKey"].ToString());
         }
 
         [HttpPost]

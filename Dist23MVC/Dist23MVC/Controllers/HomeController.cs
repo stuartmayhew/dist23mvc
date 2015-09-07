@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Dist23MVC.Models;
 using System.Data.Entity;
+using System.Web.Script.Serialization;
 
 namespace Dist23MVC.Controllers
 {
@@ -50,7 +51,27 @@ namespace Dist23MVC.Controllers
         public ActionResult NewsCreate()
         {
             News news = new News();
+            var eventList = db.Events.Select(x => new SelectListItem
+                                    {
+                                        Value = x.pKey.ToString(),
+                                        Text = x.EventName,
+                                    });
+            ViewBag.EventKey = eventList;
             return View(news);
+        }
+
+        public string GetEvent(string selection)
+        {
+            int EventKey = int.Parse(selection);
+            var Qdata = db.Events.Where(x => x.pKey == EventKey);
+            Events data = (Events)Qdata.FirstOrDefault();
+            News news = new News();
+            news.EventKey = EventKey;
+            news.NewsText = data.EventName;
+            news.NewsLink = data.Eventlink;
+            news.LinkText = data.EventLinkText;
+            var json = new JavaScriptSerializer().Serialize(news);
+            return json;
         }
 
         [HttpPost]

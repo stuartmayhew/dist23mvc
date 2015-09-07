@@ -46,18 +46,25 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PhoneListCreate([Bind(Include = "pKey,LastName,FirstName,Phone,Email,Gender,LastServed,SobDate,Speaker,Jail,Daphne,Fairhope,County,TwStep,Ride,PhoneList1,AttendWorkshop,Treatement,SpecialEvents,GoogleVoice,onHold")] VolunteerList volunteerList)
+        public ActionResult PhoneListCreate([Bind(Include = "pKey,LastName,FirstName,Phone,Email,Gender,SobDate,HomeGroup,Speaker,Jail,TwStep,Ride,PhoneList,Treatment,SpecialEvents")] VolunteerList volunteerList)
         {
             if (ModelState.IsValid)
             {
                 db.VolunteerList.Add(volunteerList);
                 db.SaveChanges();
-                return RedirectToAction("PhoneListIndex");
+                int newKey = volunteerList.pKey;
+                Session["isEditing"] = true;
+                SendEmail();
+                return RedirectToAction("PhoneListThanks");
             }
 
-            return View(volunteerList);
+            return RedirectToAction("PhoneListCreate");
         }
 
+        public ActionResult PhoneListThanks()
+        {
+            return View();
+        }
         // GET: PhoneLists/Edit/5
         public ActionResult PhoneListEdit(int? id)
         {
@@ -113,6 +120,11 @@ namespace Dist23MVC.Controllers
             db.VolunteerList.Remove(volunteerList);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void SendEmail()
+        {
+
         }
 
         protected override void Dispose(bool disposing)

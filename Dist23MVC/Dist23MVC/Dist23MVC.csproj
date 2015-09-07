@@ -226,6 +226,7 @@
     <Content Include="Views\PhoneLists\PhoneListDetails.cshtml" />
     <Content Include="Views\PhoneLists\PhoneListEdit.cshtml" />
     <Content Include="Views\PhoneLists\PhoneListIndex.cshtml" />
+    <Content Include="Views\PhoneLists\PhoneListThanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

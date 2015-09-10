@@ -83,6 +83,14 @@ input[type="select"] {
     }
 }
 
+.nextMeeting
+{
+height:auto;
+font-size:16px;
+font-family:Arial Black;
+font-weight:bold;
+}
+
 .newsArea
 {
 text-align:center;

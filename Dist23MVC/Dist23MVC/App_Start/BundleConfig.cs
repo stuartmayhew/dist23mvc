@@ -11,7 +11,7 @@ namespace Dist23MVC
             RegisterStyleBundles(bundles);
             RegisterScriptBundles(bundles);
 
-            BundleTable.EnableOptimizations = false;
+            //BundleTable.EnableOptimizations = false;
         }
 
 

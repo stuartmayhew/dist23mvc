@@ -5,9 +5,9 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div>
-        <div id="membersGrid">
-            @(Html.Kendo().Grid<Dist23MVC.Models.MeetingsList>()
+<div>
+    <div id="membersGrid">
+        @(Html.Kendo().Grid<Dist23MVC.Models.MeetingsList>()
         .Name("grid")
         .Columns(columns =>
         {
@@ -20,16 +20,10 @@
             columns.Bound(p => p.city).HeaderTemplate("<label for='city'>City</label>");
             columns.Bound(p => p.MapURL).ClientTemplate("<a href='#=MapURL#' target='_blank'>View Map</a>").HeaderTemplate("<label for='gender'>Maps</label>");
         })
-                 .ToolBar(tools => tools.Excel())
-                 .Excel(excel => excel
-                     .FileName("Members.xlsx")
-                     .Filterable(true)
-                     .AllPages(true)
-                 )
                  .ToolBar(tools => tools.Pdf())
                    .Pdf(pdf => pdf
                    .AllPages()
-                   .FileName("Members.pdf")
+                   .FileName("MeetingList.pdf")
                     )
         .Groupable()
         .Sortable()
@@ -39,5 +33,5 @@
         .DataSource(dataSource => dataSource
             .Ajax()
             .Read(read => read.Action("Meetings_Read", "Meetings"))))
-        </div>
     </div>
+</div>

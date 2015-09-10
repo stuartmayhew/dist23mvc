@@ -30,5 +30,7 @@ namespace Dist23MVC.Models
         public DbSet<Locations> Locations { get; set; }
         public DbSet<Links> Links { get; set; }
         public DbSet<VolunteerList> VolunteerList { get; set; }
+
+        public System.Data.Entity.DbSet<Dist23MVC.Models.NextMeeting> NextMeetings { get; set; }
     }
 }

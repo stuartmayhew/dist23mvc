@@ -122,6 +122,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinksController.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Models\MeetingsList.cs" />
     <Compile Include="Models\Meetings.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\VolunteerList.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +160,7 @@
     <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.min.css" />
     <Content Include="Content\agents.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -227,6 +230,8 @@
     <Content Include="Views\PhoneLists\PhoneListEdit.cshtml" />
     <Content Include="Views\PhoneLists\PhoneListIndex.cshtml" />
     <Content Include="Views\PhoneLists\PhoneListThanks.cshtml" />
+    <Content Include="Views\Home\NextMeeting.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,7 @@
         <div id="content">
             <p align="center" style="font-size:30px">Did you come here because you need help with your drinking?</p>
             <p align="center" style="font-size:30px">
-                <a href="#" style="color:red;" onclick="ShowMeeting()">CLICK HERE TO FIND A MEETING NOW</a>
+                <a href="#" style="color:red;" id="ShowMeeting" onclick="ShowMeeting()">CLICK HERE TO FIND A MEETING NOW</a>
             </p>
 
             <p align="center">
@@ -30,10 +30,6 @@
                 alcoholics to achieve sobriety.
             </h3>
 
-            <br />
-            <hr size="20" style="font-weight: bold; background-color: #F4D453; height: 10px;" />
-            <p align="center" style="font-size:x-large">&quot;Faith without Works is dead&quot; (bb p.79 and 88). <a href="Signup.aspx" target='_blank'>Click here to volunteer for all kinds of service work!</a></p>
-            <hr size="20" style="font-weight: bold; background-color: #F4D453; height: 10px;" />
             <br />
             <div class="newsArea">
                 <table align="center">
@@ -79,3 +75,13 @@
         </div>
     </div>
 </div>
+
+<input type="button" id="ClickMe" name="ClickMe" value="ClickMe" />
+...
+<script type="text/javascript">
+    $(function () {
+        $('#ShowMeeting').click(function () {
+            mywindow = window.open("/Home/NextMeeting", "mywindow", "location=0,status=0,scrollbars=0,  width=700,height=700");
+        });
+    });
+</script>

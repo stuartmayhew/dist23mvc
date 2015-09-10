@@ -1,0 +1,35 @@
+﻿@model Dist23MVC.Models.NextMeeting
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NextMeeting</title>
+</head>
+<body>
+    <div class="nextMeeting">
+        IF YOU CAN GO JUST @Html.DisplayFor(model => model.hours) 
+        @if (Model.hours != "1")
+        {
+            @Html.Label("hours");
+        }
+        @if (Model.hours == "1")
+        {
+            @Html.Label("hour");
+        }
+        and @Html.DisplayFor(model => model.minutes) minutes WITHOUT A DRINK... <br/><br />
+        ... then the @Html.DisplayFor(model => model.aaGroup) group in @Html.DisplayFor(model => model.city) has <br/>
+        a meeting at the @Html.DisplayFor(model => model.location) at @Html.DisplayFor(model => model.Time)<br />
+        There's a map below, and if you need a to talk to someone about your problem,<br />
+        or a ride to a meeting, call us at (251)301-6773. We'll come get you<br /><br />
+
+        <iframe src="@Html.DisplayFor(model => model.EmbedURL)" id="iFrameMap" width="600" height="450" frameborder="0" style="border:0" name="I1"></iframe>
+    </div>
+</body>
+</html>

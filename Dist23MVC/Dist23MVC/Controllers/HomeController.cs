@@ -90,5 +90,11 @@ namespace Dist23MVC.Controllers
                 return View(news);
             }
         }
+
+        public ActionResult NextMeeting()
+        {
+            NextMeeting nextMeeting = new NextMeeting();
+            return View("NextMeeting",nextMeeting);
+        }
     }
 }

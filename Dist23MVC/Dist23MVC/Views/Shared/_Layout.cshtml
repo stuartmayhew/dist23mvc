@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - District 23 AA</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/css/kendo")
-    @Scripts.Render("~/js/jquery")
+    @Styles.Render("~/Content/kendo/css")
+
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/UIscripts")
+    @Scripts.Render("~/Scripts/kendo/js")
 
 </head>
 <body>
@@ -52,11 +55,11 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-
-    @Scripts.Render("~/js/scripts")
-    @Scripts.Render("~/js/kendo")
+    
     @RenderSection("scripts", false)
-    @Scripts.Render("~/js/trawick")
+
+    @Scripts.Render("~/Scripts/trawick")
+
     @RenderSection("inlineScripts", false)
 </body>
 </html>

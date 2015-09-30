@@ -5,6 +5,13 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .k-grid {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+        font-size: 0.9em;
+    }
+</style>
+<script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/kendo/pako_deflate.min.js")"></script>
 <div>
     <div id="membersGrid">
         @(Html.Kendo().Grid<Dist23MVC.Models.MeetingsList>()

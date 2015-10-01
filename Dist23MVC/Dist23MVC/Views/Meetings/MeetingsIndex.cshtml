@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Dist23MVC.Models.MeetingsList>
 @using Kendo.Mvc.UI;
-@*<script src="~/Scripts/jquery-1.11.2.js"></script>*@
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,6 +20,12 @@
             columns.Bound(p => p.city).HeaderTemplate("<label for='city'>City</label>");
             columns.Bound(p => p.MapURL).ClientTemplate("<a href='#=MapURL#' target='_blank'>View Map</a>").HeaderTemplate("<label for='gender'>Maps</label>");
         })
+               .ToolBar(tools => tools.Excel())
+                 .Excel(excel => excel
+                     .FileName("Members.xlsx")
+                     .Filterable(true)
+                     .AllPages(true)
+                 )
                  .ToolBar(tools => tools.Pdf())
                    .Pdf(pdf => pdf
                    .AllPages()

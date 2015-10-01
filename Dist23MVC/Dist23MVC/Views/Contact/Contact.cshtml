@@ -43,6 +43,21 @@
                 <td></td>
                 <td><input id="submit" type="submit" value="Send Mail" /></td>
             </tr>
+            @if (ViewBag.Status == "Mail successfully sent.")
+            {
+
+                <tr>
+                    <td></td>
+                    <td>@ViewBag.Status</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td></td>
+                    <td><p style="color:red;">@ViewBag.Status</p></td>
+                </tr>
+            }
         </table>
     }
 </div>

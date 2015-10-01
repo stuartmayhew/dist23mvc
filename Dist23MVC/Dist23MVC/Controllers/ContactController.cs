@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Net.Mail;
 using Dist23MVC.Models;
+using Dist23MVC.Helpers;
 
 namespace Dist23MVC.Controllers
 {
@@ -23,70 +23,18 @@ namespace Dist23MVC.Controllers
             string nameFrom = fData["userName"].ToString();
             string emailFrom = fData["userEmail"].ToString();
             string destination = fData["contactWho"].ToString();
-            SendEmail(body, nameFrom, emailFrom, destination);
-            return View();
-
-        }
-
-        private bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination)
-        {
-            string body = nameFrom + " at " + emailFrom + " wrote <br/>";
-            body += textBody;
-            string emailTo = GetDestinationEmail(destination);
-            //SmtpClient client = new SmtpClient("relay-hosting.secureserver.net");
-            //MailMessage mail = new MailMessage();
-            //mail.From = emailFrom;
-            //mail.To = emailTo;
-            //mail.Subject = "Email from website from " + nameFrom;
-            //mail.IsBodyHtml = true;
-            //mail.Body = body;
-            //try
-            //{
-            //    client.Send(mail);
-            //    return true;
-            //}
-            //catch
-            //{
- return false;
-            //}
-        }
-        private string GetDestinationEmail(string emailTo)
-        {
-            switch (emailTo)
+            if (!MailHelper.SendEmail(body, nameFrom, emailFrom, destination))
             {
-                case "I need help":
-                    return LookupEmail("general");
-                    break;
-                case "Webmaster":
-                    return LookupEmail("webmaster");
-                    break;
-                case "DCM (District Committee Member)":
-                    return LookupEmail("DCM");
-                    break;
-                case "Public Information":
-                    return LookupEmail("PI");
-                    break;
-                case "Treatment Chair":
-                    return LookupEmail("Treatment");
-                    break;
-                case "Corrections Chair":
-                    return LookupEmail("Corrections");
-                    break;
-                case "I am a professional needing information":
-                    return LookupEmail("CPC");
-                    break;
+                ViewBag.Status = "Sorry, we couldn't send your note. Call the hotline at (251)301-6773 if you need help now!";
             }
-            return "";
+            else
+            {
+                ViewBag.Status = "Mail successfully sent.";
+            }
+            return View("Contact");
         }
 
-        private string LookupEmail(string type)
-        {
-            using (Dist23Data db = new Dist23Data())
-            {
-                // string emailAdd = db.Database.SqlQuery("SELECT email FROM Committees WHERE committeeName='" + type + "'");
-            }
-            return "";
-        }
+
 
     }
 }

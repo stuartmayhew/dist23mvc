@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\LoginHelpers.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
     <Compile Include="Models\Events.cs" />

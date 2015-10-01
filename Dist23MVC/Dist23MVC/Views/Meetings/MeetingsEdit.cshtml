@@ -8,7 +8,8 @@
 <h2>View</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "MeetingCreate")<br/>
+    @Html.ActionLink("Public Site", "MeetingsIndex")
 </p>
 <table class="table">
     <tr>
@@ -60,9 +61,8 @@
             @Html.DisplayFor(modelItem => item.city)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pKey })
+            @Html.ActionLink("Edit", "MeetingEdit", new { id = item.pKey }) |
+            @Html.ActionLink("Delete", "MeetingDelete", new { id = item.pKey })
         </td>
     </tr>
 }

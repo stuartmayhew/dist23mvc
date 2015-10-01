@@ -37,6 +37,10 @@ namespace Dist23MVC.Controllers
 
         public ActionResult MeetingsEdit() 
         {
+            if (!Dist23MVC.Helpers.LoginHelpers.isLoggedIn())
+            {
+                return View("../Login/Login");
+            }
             IEnumerable<Meetings> results = db.Meetings.ToList();
             return View(results);
         }
@@ -57,8 +61,29 @@ namespace Dist23MVC.Controllers
         }
 
         // GET: Meetings/Create
-        public ActionResult Create()
+        public ActionResult MeetingCreate()
         {
+            var aaGroup = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.aaGroup,
+                Text = x.aaGroup,
+            }).Distinct();
+            ViewBag.aaGroup = aaGroup;
+
+            var location = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.location,
+                Text = x.location,
+            }).Distinct();
+            ViewBag.location = location;
+            
+            var Day = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.Day,
+                Text = x.Day,
+            }).Distinct();
+            ViewBag.Day = Day;
+
             return View();
         }
 
@@ -67,20 +92,20 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pKey,Day,Time,type,topic,aaGroup,location,city")] Meetings meetings)
+        public ActionResult MeetingCreate([Bind(Include = "pKey,Day,Time,type,topic,aaGroup,location,city")] Meetings meetings)
         {
             if (ModelState.IsValid)
             {
                 db.Meetings.Add(meetings);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MeetingsEdit");
             }
 
             return View(meetings);
         }
 
         // GET: Meetings/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult MeetingEdit(int? id)
         {
             if (id == null)
             {
@@ -99,19 +124,19 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pKey,Day,Time,type,topic,aaGroup,location,city")] Meetings meetings)
+        public ActionResult MeetingEdit([Bind(Include = "pKey,Day,Time,type,topic,aaGroup,location,city")] Meetings meetings)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(meetings).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MeetingsEdit");
             }
             return View(meetings);
         }
 
         // GET: Meetings/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult MeetingDelete(int? id)
         {
             if (id == null)
             {
@@ -122,18 +147,9 @@ namespace Dist23MVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(meetings);
-        }
-
-        // POST: Meetings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Meetings meetings = db.Meetings.Find(id);
             db.Meetings.Remove(meetings);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MeetingsEdit");
         }
 
         protected override void Dispose(bool disposing)

@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.ActionLink("Add New", "Create")
+                    @Html.ActionLink("Add New", "LinksCreate")
                 </td>
             </tr>
         }
@@ -36,8 +36,8 @@
                     @if (Session["loginName"] != null)
                     {
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.pKey }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.pKey })
+                        @Html.ActionLink("Edit", "LinksEdit", new { id = item.pKey }) |
+                        @Html.ActionLink("Delete", "LinksDelete", new { id = item.pKey })
                     </td>
                     }
                 </tr>

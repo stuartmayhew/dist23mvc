@@ -46,6 +46,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>C:\trawick\roster-admin\RosterAdmin\bin\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Kendo.Mvc, Version=2015.1.408.440, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>_dependencies\Kendo.Mvc.dll</HintPath>
@@ -136,6 +139,7 @@
     </Compile>
     <Compile Include="Helpers\LoginHelpers.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Models\clsDataGetter.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
     <Compile Include="Models\Events.cs" />

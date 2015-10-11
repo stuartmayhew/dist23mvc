@@ -80,6 +80,10 @@ namespace Dist23MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EventsEdit([Bind(Include = "pKey,EventCat,EventName,Eventlink,EventLinkText")] Events events)
         {
+            if (Session["currFile"] != null)
+            {
+                events.Eventlink = Session["currFile"].ToString();
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(events).State = EntityState.Modified;
@@ -127,7 +131,7 @@ namespace Dist23MVC.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
                     file.SaveAs(path);
-                    Session["currFile"] = "http://www.easternshoreaa.org/upload/" + fileName;
+                    Session["currFile"] = "../upload/" + fileName;
                 }
             }
 
@@ -146,7 +150,7 @@ namespace Dist23MVC.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
                     file.SaveAs(path);
-                    Session["currFile"] = "http://www.easternshoreaa.org/upload/" + fileName;
+                    Session["currFile"] = "~/upload/" + fileName;
                 }
             }
 

@@ -12,6 +12,7 @@ namespace Dist23MVC.Models
         [Key]
         public int pKey { get; set; }
         public string EventCat { get; set; }
+        [DataType(DataType.MultilineText)]
         public string EventName { get; set; }
         public string Eventlink  { get; set; }
         public string EventLinkText { get; set; }

@@ -27,7 +27,7 @@ namespace Dist23MVC.Controllers
             {
                 int ID = 0;
 
-                if (IsValid(login.username,login.password, ref ID))
+                if (IsValid(login.username, login.password, ref ID))
                 {
                     FormsAuthentication.SetAuthCookie(login.username, false);
                     return RedirectToAction("Index", "Home");
@@ -51,6 +51,23 @@ namespace Dist23MVC.Controllers
                 Session["LoginName"] = login.Name;
                 return true;
             }
+        }
+
+        public ActionResult RequestLogin(FormCollection fData)
+        {
+            string emailFrom = fData["reqEmail"].ToString();
+            string nameFrom = fData["reqName"].ToString();
+            string reqPassword = fData["reqPassword"].ToString();
+            string mailBody = "Login request from " + nameFrom + " email:" + emailFrom + " password:" + reqPassword;
+            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, "Webmaster"))
+            {
+                ViewBag.LoginReq = "Request sent. You'll here from us";
+            }
+            else
+            {
+                ViewBag.LoginReq = "Request failed, try again later.";
+            }
+            return View("Login");
         }
     }
 }

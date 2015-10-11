@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login","Login"))
 {
     @Html.AntiForgeryToken()
     
@@ -46,6 +46,13 @@
         <hr />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                Your name:
+                @Html.Editor("reqName")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
                 Enter your email address:
                 @Html.Editor("reqEmail")
             </div>
@@ -56,6 +63,12 @@
                 Enter desired password:
                 @Html.Editor("reqPassword")
             </div>
+        </div>
+        <div class="col-md-12">
+            @if(ViewBag.LoginReq != null)
+            {
+                @Html.Raw(ViewBag.LoginReq);
+            }
         </div>
 
         <div class="form-group">

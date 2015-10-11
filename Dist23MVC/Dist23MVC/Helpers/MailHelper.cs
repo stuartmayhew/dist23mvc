@@ -86,10 +86,10 @@ namespace Dist23MVC.Helpers
             {
                 case "confirm":
                      string emailStr = "";
-                     emailStr += "<p>Thanks for contacting District 11 AA.</p>";
+                     emailStr += "<p>Thanks for contacting District 23 AA.</p>";
                      emailStr += "<p>Someone will get back to you as soon as possible</p><br/>";
                      emailStr += "<p>Thanks,<br>";
-                     emailStr += "District 11 AA";
+                     emailStr += "District 23 AA";
                      return emailStr;
                     break;
             }

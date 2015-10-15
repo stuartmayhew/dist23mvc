@@ -17,9 +17,10 @@ namespace Dist23MVC
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
+            string distKey = HttpContext.Current.Session["currDist"].ToString();
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.min.css")
-                .Include("~/Content/site.css"));
+                .Include(GlobalVariables.StyleSheet));
 
             bundles.Add(new StyleBundle("~/Content/kendo/css")
                 .Include("~/Content/kendo/kendo.common-bootstrap.min.css")

@@ -34,14 +34,24 @@ namespace Dist23MVC.Controllers
 
         private IEnumerable<MeetingsList> GetMeetings()
         {
-            IEnumerable<MeetingsList> results = db.Database.SqlQuery<MeetingsList>("sp_GetMeetings").ToList();
+            var idParam = new SqlParameter {
+                ParameterName = "DistKey",
+                Value = int.Parse(Session["currDist"].ToString())
+            };
+
+            IEnumerable<MeetingsList> results = db.Database.SqlQuery<MeetingsList>(
+                "sp_GetMeetings @DistKey",idParam).ToList();
+
             return results;
         }
 
         // GET: Meetings
         public ActionResult MeetingsIndex()
         {
-            IEnumerable<MeetingsList> results = db.Database.SqlQuery<MeetingsList>("sp_GetMeetings").ToList();
+            IEnumerable<MeetingsList> results = db.Database.SqlQuery<MeetingsList>(
+                "sp_GetMeetings  @DistKey", Session["currDist"].ToString());
+                //new SqlParameter("@DistKey", Session["currDist"].ToString())
+                //).ToList();
             return View(results);
         }
 

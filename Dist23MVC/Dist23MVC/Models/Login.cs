@@ -16,5 +16,7 @@ namespace Dist23MVC.Models
         public string password { get; set; }
         public int level { get; set; }
         public string Name  { get; set; }
+        public int DistKey { get; set; }
+
     }
 }

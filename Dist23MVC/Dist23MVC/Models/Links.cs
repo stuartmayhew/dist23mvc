@@ -15,5 +15,7 @@ namespace Dist23MVC.Models
         public int ListOrder { get; set; }
         public string LinkComment { get; set; }
         public string target { get; set; }
+        public int DistKey { get; set; }
+
     }
 }

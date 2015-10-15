@@ -19,7 +19,7 @@ namespace Dist23MVC.Controllers
         // GET: Events
         public ActionResult EventsIndex()
         {
-            return View(db.Events.ToList());
+            return View(db.Events.Where(x => x.DistKey == GlobalVariables.DistKey).ToList());
         }
 
         // GET: Events/Create
@@ -78,7 +78,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EventsEdit([Bind(Include = "pKey,EventCat,EventName,Eventlink,EventLinkText")] Events events)
+        public ActionResult EventsEdit([Bind(Include = "pKey,DistKey,EventCat,EventName,Eventlink,EventLinkText")] Events events)
         {
             if (Session["currFile"] != null)
             {
@@ -120,7 +120,7 @@ namespace Dist23MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadEdit()
+        public ActionResult UploadEdit(int id)
         {
             if (Request.Files.Count > 0)
             {
@@ -128,7 +128,9 @@ namespace Dist23MVC.Controllers
 
                 if (file != null && file.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
+                    System.IO.FileInfo fi = new FileInfo(file.FileName);
+                    var ext = fi.Extension;
+                    var fileName = BuildEventFileName(Path.GetFileName(file.FileName),ext,id);
                     var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
                     file.SaveAs(path);
                     Session["currFile"] = "../upload/" + fileName;
@@ -177,6 +179,22 @@ namespace Dist23MVC.Controllers
             items.Add(new SelectListItem { Text = "National", Value = "NATL" });
 
             return items;
+        }
+
+        private string BuildEventFileName(string fName,string ext, int id = -1)
+        {
+            int nextKey = 0;
+            if (id < 0)
+            {
+                clsDataGetter dg = new clsDataGetter(db.Database.Connection.ConnectionString);
+                nextKey = dg.GetScalarInteger("SELECT MAX(pKey) FROM Events WHERE DistKey=" + GlobalVariables.DistNumber);
+                nextKey += 1;
+            }
+            else
+            {
+                nextKey = id;
+            }
+            return GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
         }
 
         protected override void Dispose(bool disposing)

@@ -57,7 +57,7 @@
     </div>
 }
 
-@using (Html.BeginForm("UploadEdit", "Events", FormMethod.Post, new { enctype = "multipart/form-data"}))
+@using (Html.BeginForm("UploadEdit", "Events",new { id = ViewContext.RouteData.Values["id"] },FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     <input type="file" name="file" />
     <input type="submit" name="Submit" id="Submit" value="Upload" />

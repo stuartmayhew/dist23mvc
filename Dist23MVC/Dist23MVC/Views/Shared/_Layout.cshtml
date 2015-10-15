@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - District 23 AA</title>
+    <title>@ViewBag.Title - @GlobalVariables.SiteName</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/kendo/css")
 
@@ -44,12 +44,10 @@
     </div>
     <div id="mainpic">
         <h1>
-            Alcoholics Anonymous of the Eastern Shore,
-            <br />
-            Baldwin County, AL <span class="lighter"></span>
+            @GlobalVariables.BannerText <span class="lighter"></span>
         </h1>
         <h2>
-            District 23 - Serving Bay Minette, Fairhope, Spanish Fort and Daphne
+            @GlobalVariables.BannerSubText
         </h2>
     </div>
     <div class="container body-content">

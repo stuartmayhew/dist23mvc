@@ -21,6 +21,8 @@ namespace Dist23MVC.Models
         public string EmbedURL { get; set; }
         public string hours { get; set; }
         public string minutes { get; set; }
+        public int DistKey { get; set; }
+
 
         public NextMeeting()
         {

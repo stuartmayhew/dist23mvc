@@ -17,5 +17,6 @@ namespace Dist23MVC.Models
         public string Eventlink  { get; set; }
         public string EventLinkText { get; set; }
         public string EventCatName { get; set; }
+        public int DistKey { get; set; }
     }
 }

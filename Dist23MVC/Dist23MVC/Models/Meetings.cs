@@ -17,5 +17,7 @@ namespace Dist23MVC.Models
         public string aaGroup { get; set; }
         public string location { get; set; }
         public string city { get; set; }
+        public int DistKey { get; set; }
+
     }
 }

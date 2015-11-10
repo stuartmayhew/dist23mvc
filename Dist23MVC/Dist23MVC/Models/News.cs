@@ -18,6 +18,9 @@ namespace Dist23MVC.Models
         public int? ListOrder { get; set; }
         public int DistKey { get; set; }
 
-
+        public News()
+        {
+            DistKey = GlobalVariables.DistKey;
+        }
     }
 }

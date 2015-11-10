@@ -40,11 +40,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>C:\trawick\roster-admin\RosterAdmin\bin\itextsharp.dll</HintPath>
@@ -127,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommHeadersController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -140,6 +143,8 @@
     <Compile Include="Helpers\LoginHelpers.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Models\clsDataGetter.cs" />
+    <Compile Include="Models\CommHeaders.cs" />
+    <Compile Include="Models\CommLinks.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
     <Compile Include="Models\Events.cs" />
@@ -279,6 +284,11 @@
     <Content Include="Views\PhoneLists\PhoneListThanks.cshtml" />
     <Content Include="Views\Home\NextMeeting.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\CommHeaders\CommCreate.cshtml" />
+    <Content Include="Views\CommHeaders\CommDelete.cshtml" />
+    <Content Include="Views\CommHeaders\CommEdit.cshtml" />
+    <Content Include="Views\CommHeaders\CommIndex.cshtml" />
+    <Content Include="Views\CommHeaders\CommLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

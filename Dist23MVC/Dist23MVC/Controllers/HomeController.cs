@@ -15,7 +15,7 @@ namespace Dist23MVC.Controllers
 
         public ActionResult Index()
         {
-            var newsItems = db.News.OrderBy(n => n.ListOrder).ToList();
+            var newsItems = db.News.Where(n => n.DistKey == GlobalVariables.DistKey).OrderBy(n => n.ListOrder).ToList();
             return View(newsItems);
         }
 
@@ -51,7 +51,7 @@ namespace Dist23MVC.Controllers
         public ActionResult NewsCreate()
         {
             News news = new News();
-            var eventList = db.Events.Select(x => new SelectListItem
+            var eventList = db.Events.Where(n => n.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
                                     {
                                         Value = x.pKey.ToString(),
                                         Text = x.EventName,
@@ -80,6 +80,7 @@ namespace Dist23MVC.Controllers
 
             if (ModelState.IsValid)
             {
+                news.DistKey = GlobalVariables.DistKey;
                 db.News.Add(news);
                 db.SaveChanges();
 

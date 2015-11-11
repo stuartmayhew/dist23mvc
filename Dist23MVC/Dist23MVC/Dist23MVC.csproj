@@ -199,9 +199,12 @@
     <Content Include="Content\Site23.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="images\background.png" />
-    <Content Include="images\main1.jpg" />
-    <Content Include="images\menu.png" />
+    <Content Include="images\background11.png" />
+    <Content Include="images\background23.png" />
+    <Content Include="images\main11.jpg" />
+    <Content Include="images\main23.jpg" />
+    <Content Include="images\menu11.png" />
+    <Content Include="images\menu23.png" />
     <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

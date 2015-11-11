@@ -36,7 +36,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EventsCreate([Bind(Include = "pKey,EventCat,EventName,Eventlink,EventLinkText")] Events events)
+        public ActionResult EventsCreate(Events events)
         {
             if (ModelState.IsValid)
             {
@@ -44,9 +44,11 @@ namespace Dist23MVC.Controllers
                 {
                     events.Eventlink = Session["currFile"].ToString();
                 }
+                events.DistKey = GlobalVariables.DistKey;
                 db.Events.Add(events);
                 db.SaveChanges();
-                return RedirectToAction("EventsIndex");
+                Session["currEventKey"] = events.pKey;
+                return RedirectToAction("EventsEdit/" + Session["currEventKey"].ToString());
             }
 
             return View(events);
@@ -84,6 +86,7 @@ namespace Dist23MVC.Controllers
             {
                 events.Eventlink = Session["currFile"].ToString();
             }
+            events.DistKey = GlobalVariables.DistKey;
             if (ModelState.IsValid)
             {
                 db.Entry(events).State = EntityState.Modified;
@@ -130,7 +133,7 @@ namespace Dist23MVC.Controllers
                 {
                     System.IO.FileInfo fi = new FileInfo(file.FileName);
                     var ext = fi.Extension;
-                    var fileName = BuildEventFileName(Path.GetFileName(file.FileName),ext,id);
+                    var fileName = BuildEventFileName(ext,id);
                     var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
                     file.SaveAs(path);
                     Session["currFile"] = "../upload/" + fileName;
@@ -141,7 +144,7 @@ namespace Dist23MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadCreate()
+        public void UploadCreate()
         {
             if (Request.Files.Count > 0)
             {
@@ -149,14 +152,14 @@ namespace Dist23MVC.Controllers
 
                 if (file != null && file.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
+                    System.IO.FileInfo fi = new FileInfo(file.FileName);
+                    var ext = fi.Extension;
+                    var fileName = BuildEventFileName(ext, -1);
                     var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
                     file.SaveAs(path);
                     Session["currFile"] = "~/upload/" + fileName;
                 }
             }
-
-            return RedirectToAction("EventsCreate");
         }
 
         List<SelectListItem> BuildEventCatList()
@@ -181,7 +184,7 @@ namespace Dist23MVC.Controllers
             return items;
         }
 
-        private string BuildEventFileName(string fName,string ext, int id = -1)
+        private string BuildEventFileName(string ext, int id = -1)
         {
             int nextKey = 0;
             if (id < 0)
@@ -194,7 +197,7 @@ namespace Dist23MVC.Controllers
             {
                 nextKey = id;
             }
-            return GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
+            return "e_" + GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
         }
 
         protected override void Dispose(bool disposing)

@@ -33,8 +33,8 @@ namespace Dist23MVC.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-            return RedirectToAction("Index", "Home");
             ModelState.AddModelError("", "Login data is incorrect!");
+            return RedirectToAction("Index", "Home");
         }
 
         public bool IsValid(string username, string password, ref int id)

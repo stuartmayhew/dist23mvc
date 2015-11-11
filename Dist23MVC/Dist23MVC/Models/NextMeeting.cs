@@ -38,6 +38,8 @@ namespace Dist23MVC.Models
                         cmd.Connection = conn;
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.CommandText = "sp_NextMeeting";
+                        cmd.Parameters.AddWithValue("@DistKey", GlobalVariables.DistKey);
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())

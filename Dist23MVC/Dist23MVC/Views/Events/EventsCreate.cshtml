@@ -50,11 +50,11 @@
     </div>
 }
 
-@using (Html.BeginForm("UploadCreate", "Events", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@*@using (Html.BeginForm("UploadCreate", "Events", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="file" />
     <input type="submit" name="Submit" id="Submit" value="Upload" />
-}
+}*@
 
 <div>
     @Html.ActionLink("Back to List", "EventsIndex")

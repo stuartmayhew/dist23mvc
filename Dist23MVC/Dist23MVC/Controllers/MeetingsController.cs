@@ -127,6 +127,27 @@ namespace Dist23MVC.Controllers
         // GET: Meetings/Edit/5
         public ActionResult MeetingEdit(int? id)
         {
+            var aaGroup = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.aaGroup,
+                Text = x.aaGroup,
+            }).Distinct();
+            ViewBag.aaGroup = aaGroup;
+
+            var location = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.location,
+                Text = x.location,
+            }).Distinct();
+            ViewBag.location = location;
+
+            var Day = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.Day,
+                Text = x.Day,
+            }).Distinct();
+            ViewBag.Day = Day;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

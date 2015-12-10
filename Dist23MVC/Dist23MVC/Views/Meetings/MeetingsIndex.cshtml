@@ -42,6 +42,7 @@
         .Sortable()
         .ColumnMenu()
         .Filterable()
+        .Mobile(MobileMode.Auto)
         .Scrollable(h => h.Height("auto"))
         .DataSource(dataSource => dataSource
             .Ajax()
@@ -49,3 +50,4 @@
     </div>
     @Html.ActionLink("Download","DownloadMeetings","Meetings")
 </div>
+ 

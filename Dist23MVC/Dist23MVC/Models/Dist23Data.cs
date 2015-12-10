@@ -23,7 +23,7 @@ namespace Dist23MVC.Models
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<News> News { get; set; }
-        public DbSet<Login> Login { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
         public DbSet<Meetings> Meetings { get; set; }
         public DbSet<Events> Events { get; set; }
         public DbSet<dayorder> dayorder { get; set; }

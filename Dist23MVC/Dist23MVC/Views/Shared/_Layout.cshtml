@@ -38,7 +38,15 @@
                     <li>@Html.ActionLink("Links", "LinksIndex", "Links")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
                     <li>@Html.ActionLink("Committees", "CommIndex", "CommHeaders")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    @if (Session["LoginName"] == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                    }
+                    @if (Session["LoginName"] != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        <li>Logged in as @Session["loginName"].ToString()</li>
+                    }
                 </ul>
             </div>
         </div>
@@ -54,7 +62,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    
+
     @RenderSection("scripts", false)
 
     @Scripts.Render("~/Scripts/trawick")

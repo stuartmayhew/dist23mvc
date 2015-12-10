@@ -35,7 +35,7 @@ namespace Dist23MVC.Controllers
         }
 
         // GET: CommHeaders/Create
-        public ActionResult Create()
+        public ActionResult CommCreate()
         {
             return View();
         }
@@ -45,20 +45,16 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
+        public ActionResult CommCreate([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
         {
-            if (ModelState.IsValid)
-            {
-                db.CommHeaders.Add(commHeaders);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(commHeaders);
+            commHeaders.DistKey = GlobalVariables.DistKey;
+            db.CommHeaders.Add(commHeaders);
+            db.SaveChanges();
+            return RedirectToAction("CommIndex");
         }
 
         // GET: CommHeaders/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult CommEdit(int? id)
         {
             if (id == null)
             {
@@ -77,43 +73,30 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
+        public ActionResult CommEdit([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
         {
             if (ModelState.IsValid)
             {
+                commHeaders.DistKey = GlobalVariables.DistKey;
                 db.Entry(commHeaders).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CommIndex");
             }
             return View(commHeaders);
         }
 
         // GET: CommHeaders/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult CommDelete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CommHeaders commHeaders = db.CommHeaders.Find(id);
-            if (commHeaders == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commHeaders);
-        }
-
-        // POST: CommHeaders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            CommHeaders commHeaders = db.CommHeaders.Find(id);
             db.CommHeaders.Remove(commHeaders);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CommIndex",new { id = commHeaders.pKey });
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

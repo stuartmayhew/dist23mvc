@@ -171,7 +171,7 @@ namespace Dist23MVC.Controllers
 
             items.Add(new SelectListItem { Text = "District 12", Value = "D12" });
 
-            items.Add(new SelectListItem { Text = "District 19", Value = "D19", Selected = true });
+            items.Add(new SelectListItem { Text = "District 19", Value = "D19"});
 
             items.Add(new SelectListItem { Text = "Area 1", Value = "AREA1" });
 
@@ -197,7 +197,7 @@ namespace Dist23MVC.Controllers
             {
                 nextKey = id;
             }
-            return "e_" + GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
+            return "event_" + GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
         }
 
         protected override void Dispose(bool disposing)

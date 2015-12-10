@@ -21,34 +21,40 @@ namespace Dist23MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Login login)
+        public ActionResult Login(Contacts contact)
         {
             if (ModelState.IsValid)
             {
                 int ID = 0;
 
-                if (IsValid(login.username, login.password, ref ID))
+                if (IsValid(contact.email, contact.password, ref ID))
                 {
-                    FormsAuthentication.SetAuthCookie(login.username, false);
+                    FormsAuthentication.SetAuthCookie(contact.email, false);
                     return RedirectToAction("Index", "Home");
                 }
             }
-            ModelState.AddModelError("", "Login data is incorrect!");
+            ViewBag.ErrorMsg = "Login data is incorrect!";
+            return RedirectToAction("Login", "Login");
+        }
+
+        public ActionResult Logout()
+        {
+            Session["loginName"] = null;
             return RedirectToAction("Index", "Home");
         }
 
         public bool IsValid(string username, string password, ref int id)
         {
             Dist23Data db = new Dist23Data();
-            var logins = db.Login.Where(x => x.username == username && x.password == password);
-            Login login = logins.FirstOrDefault();
-            if (login == null)
+            var contacts = db.Contacts.Where(x => x.email == username && x.password == password);
+            Contacts contact = contacts.FirstOrDefault();
+            if (contact == null)
             {
                 return false;
             }
             else
             {
-                Session["LoginName"] = login.Name;
+                Session["LoginName"] = contact.name;
                 return true;
             }
         }

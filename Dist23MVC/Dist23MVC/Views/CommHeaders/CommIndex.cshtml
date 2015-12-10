@@ -36,8 +36,8 @@
                     @if (Session["loginName"] != null)
                     {
                     <td>
-                        @Html.ActionLink("Edit", "LinksEdit", new { id = item.pKey }) |
-                        @Html.ActionLink("Delete", "LinksDelete", new { id = item.pKey })
+                        @Html.ActionLink("Edit", "CommEdit", new { id = item.pKey }) |
+                        @Html.ActionLink("Delete", "CommDelete", new { id = item.pKey })
                     </td>
                     }
                 </tr>

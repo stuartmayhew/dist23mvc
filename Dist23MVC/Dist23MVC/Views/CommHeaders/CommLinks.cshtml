@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.ActionLink("Add New", "LinksCreate")
+                    @Html.ActionLink("Add New", "CommLinkCreate","CommLinks")
                 </td>
             </tr>
         }
@@ -31,17 +31,17 @@
             <tr>
                 <td class="newsItem">
                     <hr size="5" style="font-weight: bold; background-color: #F4D453; height: 5px;" />
-                    <h2>@Html.DisplayFor(modelItem => item.LinkHeader)</h2>
+                    <h2>@Html.DisplayFor(modelItem => item.LinkTitle)</h2>
+                    <h4>@Html.DisplayFor(modelItem => item.LinkHeader)</h4>
                     <a href="@Html.DisplayFor(modelItem => item.LinkURL)" target="_blank"> @Html.DisplayFor(modelItem => item.LinkText)</a><br />
                     @if (Session["loginName"] != null)
                     {
                     <td>
-                        @Html.ActionLink("Edit", "LinksEdit", new { id = item.pKey }) |
-                        @Html.ActionLink("Delete", "LinksDelete", new { id = item.pKey })
+                        @Html.ActionLink("Edit", "CommLinkEdit", "CommLinks", new { id = item.pKey }, null)
+                        @Html.ActionLink("Delete", "CommLinkDelete", "CommLinks", new { id = item.pKey })
                     </td>
                     }
                 </tr>
         }
     </table>
-
-    
+</div>

@@ -36,25 +36,18 @@ namespace Dist23MVC.Helpers
             {
                 case "I need help":
                     return LookupEmail("general","contact");
-                    break;
                 case "Webmaster":
                     return LookupEmail("webmaster", "contact");
-                    break;
                 case "DCM (District Committee Member)":
                     return LookupEmail("DCM", "contact");
-                    break;
                 case "Public Information":
                     return LookupEmail("PI", "contact");
-                    break;
                 case "Treatment Chair":
                     return LookupEmail("Treatment", "contact");
-                    break;
                 case "Corrections Chair":
                     return LookupEmail("Corrections", "contact");
-                    break;
                 case "I am a professional needing information":
                     return LookupEmail("CPC", "contact");
-                    break;
             }
             return "";
         }
@@ -66,7 +59,7 @@ namespace Dist23MVC.Helpers
             {
                 if (table == "contact")
                 {
-                    emailAddVar = db.Database.SqlQuery<string>("SELECT email FROM Committees WHERE committeeName='" + type + "'").FirstOrDefault();
+                    emailAddVar = db.Database.SqlQuery<string>("SELECT email FROM contacts WHERE committeeName='" + type + "'").FirstOrDefault();
                 }
             }
             return emailAddVar;
@@ -97,3 +90,9 @@ namespace Dist23MVC.Helpers
         }
     }
 }
+
+//ses-smtp-user.20151206-074104
+//SMTP Username:
+//AKIAJNZBFYLLZHC3NPIQ
+//SMTP Password:
+//AqZ2UqLaCgyLYWM+bLngTJlrluc8NH3J5+mwShqwYTKP

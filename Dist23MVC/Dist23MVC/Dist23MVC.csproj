@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CommHeadersController.cs" />
+    <Compile Include="Controllers\CommLinksController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Models\clsDataGetter.cs" />
     <Compile Include="Models\CommHeaders.cs" />
     <Compile Include="Models\CommLinks.cs" />
+    <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
     <Compile Include="Models\Events.cs" />
@@ -293,6 +295,9 @@
     <Content Include="Views\CommHeaders\CommEdit.cshtml" />
     <Content Include="Views\CommHeaders\CommIndex.cshtml" />
     <Content Include="Views\CommHeaders\CommLinks.cshtml" />
+    <Content Include="Views\CommLinks\CommLinkCreate.cshtml" />
+    <Content Include="Views\CommLinks\CommLinkDelete.cshtml" />
+    <Content Include="Views\CommLinks\CommLinkEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

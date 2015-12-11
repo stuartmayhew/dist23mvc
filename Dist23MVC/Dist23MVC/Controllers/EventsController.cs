@@ -19,7 +19,24 @@ namespace Dist23MVC.Controllers
         // GET: Events
         public ActionResult EventsIndex()
         {
-            return View(db.Events.Where(x => x.DistKey == GlobalVariables.DistKey).ToList());
+            List<EventViewModel> evmList = new List<EventViewModel>();
+            using (Dist23Data db = new Dist23Data())
+            {
+                var EventCatList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+                foreach (var ecat in EventCatList)
+                {
+                    EventViewModel evm = new EventViewModel();
+                    evm.EventCatName = ecat.EventCatName;
+                    var EventsList = db.Events.Where(x => x.EventCat == ecat.pKey);
+                    foreach (var eve in EventsList)
+                    {
+                        evm.Events.Add(eve);
+                    }
+                    evmList.Add(evm);
+                }
+
+            }
+            return View(evmList);
         }
 
         // GET: Events/Create
@@ -27,7 +44,7 @@ namespace Dist23MVC.Controllers
         {
             if (!Helpers.LoginHelpers.isLoggedIn())
                 return RedirectToAction("Login", "Login");            
-            ViewBag.EventCatList = BuildEventCatList();
+            BuildEventCatList();
             return View();
         }
 
@@ -71,7 +88,7 @@ namespace Dist23MVC.Controllers
             {
                 events.Eventlink = Session["currFile"].ToString();
             }
-            ViewBag.EventCatList = BuildEventCatList();
+            BuildEventCatList();
             return View(events);
         }
 
@@ -162,26 +179,15 @@ namespace Dist23MVC.Controllers
             }
         }
 
-        List<SelectListItem> BuildEventCatList()
+        private void BuildEventCatList()
         {
 
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            items.Add(new SelectListItem { Text = "District 23", Value = "D23" });
-
-            items.Add(new SelectListItem { Text = "District 12", Value = "D12" });
-
-            items.Add(new SelectListItem { Text = "District 19", Value = "D19"});
-
-            items.Add(new SelectListItem { Text = "Area 1", Value = "AREA1" });
-
-            items.Add(new SelectListItem { Text = "ALCYPAA", Value = "ALC" });
-
-            items.Add(new SelectListItem { Text = "SWACO", Value = "SWACO" });
-            
-            items.Add(new SelectListItem { Text = "National", Value = "NATL" });
-
-            return items;
+            var catList = db.EventCat.Select(x => new SelectListItem
+            {
+                Value = x.pKey.ToString(),
+                Text = x.EventCatName,
+            });
+            ViewBag.EventCatList = catList;
         }
 
         private string BuildEventFileName(string ext, int id = -1)

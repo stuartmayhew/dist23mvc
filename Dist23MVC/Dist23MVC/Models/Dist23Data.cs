@@ -26,6 +26,9 @@ namespace Dist23MVC.Models
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<Meetings> Meetings { get; set; }
         public DbSet<Events> Events { get; set; }
+        public DbSet<EventCat> EventCat { get; set; }
+        public DbSet<OtherDistEvents> OtherDistEvents { get; set; }
+
         public DbSet<dayorder> dayorder { get; set; }
         public DbSet<Locations> Locations { get; set; }
         public DbSet<Links> Links { get; set; }

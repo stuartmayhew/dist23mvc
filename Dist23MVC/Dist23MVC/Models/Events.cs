@@ -18,11 +18,6 @@ namespace Dist23MVC.Models
         public string Eventlink  { get; set; }
         public string EventLinkText { get; set; }
         public string EventCatName { get; set; }
-
-        public Events()
-        {
-
-        }
     }
 
     public class EventCat
@@ -31,5 +26,13 @@ namespace Dist23MVC.Models
         public int pKey { get; set; }
         public int DistKey { get; set; }
         public string EventCatName { get; set; }
+    }
+
+    public class OtherDistEvents
+    {
+        [Key]
+        public int pKey { get; set; }
+        public int DistKey { get; set; }
+        public int ShowDistKey { get; set; }
     }
 }

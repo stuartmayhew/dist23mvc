@@ -43,8 +43,9 @@ namespace Dist23MVC.Controllers
         public ActionResult EventsCreate()
         {
             if (!Helpers.LoginHelpers.isLoggedIn())
-                return RedirectToAction("Login", "Login");            
-            BuildEventCatList();
+                return RedirectToAction("Login", "Login");
+            SelectList EventCatList = new SelectList(db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList(), "pKey", "EventCatName", db.EventCat);
+            ViewData["EventCatList"] = EventCatList;
             return View();
         }
 
@@ -182,7 +183,7 @@ namespace Dist23MVC.Controllers
         private void BuildEventCatList()
         {
 
-            var catList = db.EventCat.Select(x => new SelectListItem
+            var catList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
             {
                 Value = x.pKey.ToString(),
                 Text = x.EventCatName,

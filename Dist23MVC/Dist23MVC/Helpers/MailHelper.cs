@@ -9,9 +9,20 @@ namespace Dist23MVC.Helpers
 {
     public static class MailHelper
     {
-        private static SmtpClient client = new SmtpClient("relay-hosting.secureserver.net");
+        const String HOST = "email-smtp.us-west-2.amazonaws.com";
+
+        // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
+        // STARTTLS to encrypt the connection.
+        const int PORT = 587;
+
+        const String SMTP_USERNAME = "AKIAJNZBFYLLZHC3NPIQ";  // Replace with your SMTP username. 
+        const String SMTP_PASSWORD = "AqZ2UqLaCgyLYWM+bLngTJlrluc8NH3J5+mwShqwYTKP";  // Replace with your SMTP password.
+
+        private static SmtpClient client = new SmtpClient(HOST, PORT);
         public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination)
         {
+            client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
+            client.EnableSsl = true;
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
             string emailTo = GetDestinationEmail(destination);
@@ -35,34 +46,41 @@ namespace Dist23MVC.Helpers
             switch (emailTo)
             {
                 case "I need help":
-                    return LookupEmail("general","contact");
+                    return LookupEmail("general");
                 case "Webmaster":
-                    return LookupEmail("webmaster", "contact");
+                    return LookupEmail("Webmaster");
                 case "DCM (District Committee Member)":
-                    return LookupEmail("DCM", "contact");
+                    return LookupEmail("DCM");
                 case "Public Information":
-                    return LookupEmail("PI", "contact");
+                    return LookupEmail("PI");
                 case "Treatment Chair":
-                    return LookupEmail("Treatment", "contact");
+                    return LookupEmail("Treatment");
                 case "Corrections Chair":
-                    return LookupEmail("Corrections", "contact");
+                    return LookupEmail("Corrections");
                 case "I am a professional needing information":
-                    return LookupEmail("CPC", "contact");
+                    return LookupEmail("CPC");
             }
             return "";
         }
 
-        private static string LookupEmail(string type,string table)
+        private static string LookupEmail(string type)
         {
-            var emailAddVar = "";
+            
             using (Dist23Data db = new Dist23Data())
             {
-                if (table == "contact")
-                {
-                    emailAddVar = db.Database.SqlQuery<string>("SELECT email FROM contacts WHERE committeeName='" + type + "'").FirstOrDefault();
-                }
+                IQueryable<Contacts> emailAddVar =
+                    from contact in db.Contacts
+                    join contactPosition in db.ContactPosition on contact.pKey equals contactPosition.ContactID
+                    join positions in db.Positions on contactPosition.PositionID equals positions.pKey
+                    where positions.PositionName == type
+                    where contact.DistKey == GlobalVariables.DistKey
+                    where contactPosition.GroupID == 0
+                    select contact;
+                return emailAddVar.FirstOrDefault().email;
+                   
+                
+
             }
-            return emailAddVar;
         }
 
         private static void SendConfirm(MailAddress to)

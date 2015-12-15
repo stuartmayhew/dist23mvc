@@ -146,6 +146,7 @@
     <Compile Include="Models\clsDataGetter.cs" />
     <Compile Include="Models\CommHeaders.cs" />
     <Compile Include="Models\CommLinks.cs" />
+    <Compile Include="Models\ContactPosition.cs" />
     <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\OtherDistEvents.cs" />
+    <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\VolunteerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

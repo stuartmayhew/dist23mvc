@@ -36,5 +36,7 @@ namespace Dist23MVC.Models
         public DbSet<NextMeeting> NextMeetings { get; set; }
         public DbSet<CommHeaders> CommHeaders { get; set; }
         public DbSet<CommLinks> CommLinks { get; set; }
+        public DbSet<Positions> Positions { get; set; }
+        public DbSet<ContactPosition> ContactPosition { get; set; }
     }
 }

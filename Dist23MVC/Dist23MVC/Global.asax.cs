@@ -29,7 +29,7 @@ namespace Dist23MVC
             HttpContext context = app.Context;
 
             string host = FirstRequestInitialisation.Initialise(context);
-            //dg.RunCommand("INSERT INTO hosts(HostURL) values('" + host + "')");
+            dg.RunCommand("INSERT INTO hosts(HostURL) values('" + host + "')");
             int DistKey = dg.GetScalarInteger("SELECT DistKey FROM SiteConfig WHERE DistURL='" + host + "'");
             SqlDataReader dr = dg.GetDataReader("SELECT * FROM SiteConfig WHERE DistKey=" + DistKey.ToString());
             while (dr.Read())

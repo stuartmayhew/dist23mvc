@@ -10,6 +10,7 @@ namespace Dist23MVC.Helpers
     public static class MailHelper
     {
         const String HOST = "email-smtp.us-west-2.amazonaws.com";
+        static string fromAddress = "noreply@" + GlobalVariables.DomainName;
 
         // Port we will connect to on the Amazon SES SMTP endpoint. We are choosing port 587 because we will use
         // STARTTLS to encrypt the connection.
@@ -26,18 +27,19 @@ namespace Dist23MVC.Helpers
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
             string emailTo = GetDestinationEmail(destination);
-            MailMessage mail = new MailMessage(emailFrom, emailTo);
+            MailMessage mail = new MailMessage(fromAddress, emailTo);
             mail.Subject = "Email from website from " + nameFrom;
             mail.IsBodyHtml = true;
             mail.Body = body;
             try
             {
                 client.Send(mail);
-                SendConfirm(mail.From);
+                SendConfirm(emailFrom);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                string x = ex.Message;
                 return false;
             }
         }
@@ -83,11 +85,13 @@ namespace Dist23MVC.Helpers
             }
         }
 
-        private static void SendConfirm(MailAddress to)
+        private static void SendConfirm(string to)
         {
-            MailMessage mail = new MailMessage(new MailAddress("no-reply@easternshoreaa.org"),to);
-            mail.Subject = "Thanks for contacting AA District 11";
+            MailAddress toAddr = new MailAddress(to);
+            MailMessage mail = new MailMessage(new MailAddress(fromAddress), toAddr);
+            mail.Subject = "Thanks for contacting AA District " + GlobalVariables.DistNumber;
             mail.Body = BuildBody("confirm");
+            mail.IsBodyHtml = true;
             client.Send(mail);
         }
 
@@ -97,12 +101,11 @@ namespace Dist23MVC.Helpers
             {
                 case "confirm":
                      string emailStr = "";
-                     emailStr += "<p>Thanks for contacting District 23 AA.</p>";
+                     emailStr += "<p>Thanks for contacting District " + GlobalVariables.DistNumber + " AA.</p>";
                      emailStr += "<p>Someone will get back to you as soon as possible</p><br/>";
                      emailStr += "<p>Thanks,<br>";
-                     emailStr += "District 23 AA";
+                     emailStr += "District " + GlobalVariables.DistNumber + " AA";
                      return emailStr;
-                    break;
             }
             return "";
         }

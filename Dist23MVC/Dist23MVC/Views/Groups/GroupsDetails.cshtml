@@ -1,0 +1,50 @@
+﻿@model Dist23MVC.Models.Groups
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Groups</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DistKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pKey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -45,7 +45,9 @@
                     @if (Session["LoginName"] != null)
                     {
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
-                        <li>Logged in as @Session["loginName"].ToString()</li>
+                        <li>@Html.ActionLink("Servants", "ContactsIndex", "Contacts")</li>
+                        <li>@Html.ActionLink("Groups", "GroupsIndex", "Groups")</li>
+
                     }
                 </ul>
             </div>

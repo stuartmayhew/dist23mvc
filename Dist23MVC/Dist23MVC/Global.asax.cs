@@ -23,14 +23,22 @@ namespace Dist23MVC
 
         void Application_BeginRequest(Object source, EventArgs e)
         {
+            int DistKey;
             if (GlobalVariables.DistNumber != null)
                 return;
             HttpApplication app = (HttpApplication)source;
             HttpContext context = app.Context;
 
             string host = FirstRequestInitialisation.Initialise(context);
-            dg.RunCommand("INSERT INTO hosts(HostURL) values('" + host + "')");
-            int DistKey = dg.GetScalarInteger("SELECT DistKey FROM SiteConfig WHERE DistURL='" + host + "'");
+            //dg.RunCommand("INSERT INTO hosts(HostURL) values('" + host + "')");
+            try
+            {
+                DistKey = dg.GetScalarInteger("SELECT DistKey FROM SiteConfig WHERE DistURL='" + host + "'");
+            }
+            catch
+            {
+                DistKey = 23;
+            }
             SqlDataReader dr = dg.GetDataReader("SELECT * FROM SiteConfig WHERE DistKey=" + DistKey.ToString());
             while (dr.Read())
             {
@@ -40,6 +48,7 @@ namespace Dist23MVC
                 GlobalVariables.BannerSubText = dr["BannerSubTitle"].ToString();
                 GlobalVariables.StyleSheet = dr["DistStyle"].ToString();
                 GlobalVariables.SiteName = "AA District " + DistKey.ToString();
+                GlobalVariables.DomainName = dr["DomainName"].ToString();
             }
             dg.KillReader(dr);
 
@@ -87,5 +96,6 @@ namespace Dist23MVC
         public static string BannerSubText { get; set; }
         public static string StyleSheet { get; set; }
         public static string SiteName { get; set; }
+        public static string DomainName { get; set; }
     }
 }

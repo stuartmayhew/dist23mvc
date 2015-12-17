@@ -17,34 +17,27 @@ html{
   font-size: 16px;
 }
 
-@media(max-width: 980px) {
-  h1 {
-    font-size: 16px;
-  }
-}
-#mainpic h1
-{
-position:absolute;
-font-size: 2rem;
-color:Black;
-top:100px;
-width: 691px;
-}
-
-#mainpic h2
-{
-position:absolute;
-font-size: 1.5rem;
-color:Black;
-top:200px;
-width: 742px;
+@media (max-width: 980px) {
+    h1 {
+        font-size: 16px;
+    }
+    h2 {
+        font-size: 14px;
+    }
 }
 
 #mainpic {
-    background-image: url('../images/main23.jpg');
+    position: relative;
+    top: 50px;
+    background-image: url('/images/main23.jpg');
     background-repeat: no-repeat;
-    width: 20000px;
+    background-size: 1999px 300px;
+    background-position: left top;
+    background-attachment: fixed;
+    background-clip: content-box;
+    width: 100%;
     height: 300px;
+    color: black;
 }
 
 /* Wrapping element */

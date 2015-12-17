@@ -1,66 +1,65 @@
-﻿@model Dist23MVC.Models.Contacts
+﻿@model Dist23MVC.Models.ContactsViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "ContactsDetails";
 }
 
-<h2>Details</h2>
+<h2>ContactsDetails</h2>
 
 <div>
-    <h4>Contacts</h4>
+    <h4>ContactsViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DistKey)
+            @Html.DisplayNameFor(model => model.contact.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DistKey)
+            @Html.DisplayFor(model => model.contact.name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.name)
+            @Html.DisplayNameFor(model => model.contact.email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.name)
+            @Html.DisplayFor(model => model.contact.email)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.email)
+            @Html.DisplayNameFor(model => model.contact.phone)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.email)
+            @Html.DisplayFor(model => model.contact.phone)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessLvl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessLvl)
-        </dd>
-
     </dl>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Position")
+            </th>
+            <th>
+                @Html.Label("Group (or Dist)")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.contactPositions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupName)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "ContactPositionDelete", new { id = item.positionKey })
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.pKey }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "ContactsEdit", new { id = Model.pKey }) |
+    @Html.ActionLink("Back to List", "ContactsIndex")
 </p>

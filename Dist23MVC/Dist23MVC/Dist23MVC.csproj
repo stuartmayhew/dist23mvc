@@ -150,6 +150,7 @@
     <Compile Include="Models\CommLinks.cs" />
     <Compile Include="Models\ContactPosition.cs" />
     <Compile Include="Models\Contacts.cs" />
+    <Compile Include="Models\ContactsViewModel.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
     <Compile Include="Models\Events.cs" />
@@ -307,7 +308,6 @@
     <Content Include="Views\CommLinks\CommLinkEdit.cshtml" />
     <Content Include="Views\Contacts\ContactsCreate.cshtml" />
     <Content Include="Views\Contacts\ContactsDelete.cshtml" />
-    <Content Include="Views\Contacts\ContactsDetails.cshtml" />
     <Content Include="Views\Contacts\ContactsEdit.cshtml" />
     <Content Include="Views\Contacts\ContactsIndex.cshtml" />
     <Content Include="Views\Groups\GroupsCreate.cshtml" />
@@ -315,6 +315,7 @@
     <Content Include="Views\Groups\GroupsDetails.cshtml" />
     <Content Include="Views\Groups\GroupsEdit.cshtml" />
     <Content Include="Views\Groups\GroupsIndex.cshtml" />
+    <Content Include="Views\Contacts\ContactsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

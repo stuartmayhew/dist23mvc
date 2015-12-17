@@ -17,7 +17,7 @@ namespace Dist23MVC.Controllers
         // GET: Contacts
         public ActionResult ContactsIndex()
         {
-            return View(db.Contacts.ToList());
+            return View(db.Contacts.Where(x => x.DistKey == GlobalVariables.DistKey).ToList());
         }
 
         // GET: Contacts/Details/5
@@ -27,12 +27,12 @@ namespace Dist23MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contacts contacts = db.Contacts.Find(id);
-            if (contacts == null)
+            ContactsViewModel contactsView = new ContactsViewModel(id);
+            if (contactsView == null)
             {
                 return HttpNotFound();
             }
-            return View(contacts);
+            return View(contactsView);
         }
 
         // GET: Contacts/Create
@@ -50,6 +50,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                contacts.DistKey = GlobalVariables.DistKey;
                 db.Contacts.Add(contacts);
                 db.SaveChanges();
                 return RedirectToAction("ContactsIndex");

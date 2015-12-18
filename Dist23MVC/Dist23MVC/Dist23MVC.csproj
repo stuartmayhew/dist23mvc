@@ -316,6 +316,7 @@
     <Content Include="Views\Groups\GroupsEdit.cshtml" />
     <Content Include="Views\Groups\GroupsIndex.cshtml" />
     <Content Include="Views\Contacts\ContactsDetails.cshtml" />
+    <Content Include="Views\Contacts\PositionCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

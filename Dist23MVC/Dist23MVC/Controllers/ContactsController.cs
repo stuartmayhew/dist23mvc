@@ -38,6 +38,10 @@ namespace Dist23MVC.Controllers
         // GET: Contacts/Create
         public ActionResult ContactsCreate()
         {
+            if (!Helpers.LoginHelpers.isLoggedIn())
+                return RedirectToAction("Login", "Login");
+            //List<ContactPositionViewModel> cpvm = new List<ContactPositionViewModel>();
+            //ViewData["ContactPositionViewModel"] = cpvm;
             return View();
         }
 
@@ -57,6 +61,33 @@ namespace Dist23MVC.Controllers
             }
 
             return View(contacts);
+        }
+
+        public ActionResult PositionCreate(int ID)
+        {
+            ContactPosition newPosition = new ContactPosition();
+            newPosition.ContactID = ID;
+            newPosition.DistKey = GlobalVariables.DistKey;
+            SelectList PositionList = new SelectList(db.Positions.ToList(), "pKey", "PositionName", db.Positions);
+            ViewData["PositionList"] = PositionList;
+            SelectList GroupList = new SelectList(db.Groups.Where(x => x.DistKey == GlobalVariables.DistKey).ToList(), "pKey", "GroupName", db.Groups);
+            ViewData["GroupList"] = GroupList;
+            return View("PositionCreate", newPosition);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PositionCreate(ContactPosition contactPosition)
+        {
+            if (ModelState.IsValid)
+            {
+                contactPosition.DistKey = GlobalVariables.DistKey;
+                db.ContactPosition.Add(contactPosition);
+                db.SaveChanges();
+                return RedirectToAction("ContactsEdit",new { id = contactPosition.ContactID });
+            }
+
+            return View(contactPosition);
         }
 
         // GET: Contacts/Edit/5

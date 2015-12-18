@@ -55,6 +55,7 @@ namespace Dist23MVC.Controllers
             else
             {
                 Session["LoginName"] = contact.name;
+                Session["AccessLevel"] = contact.AccessLvl;
                 return true;
             }
         }

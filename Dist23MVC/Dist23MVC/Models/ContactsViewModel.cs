@@ -33,6 +33,11 @@ namespace Dist23MVC.Models
                 }
             }
         }
+
+        public ContactsViewModel()
+        {
+
+        }
     }
 
     public class PositionViewModel

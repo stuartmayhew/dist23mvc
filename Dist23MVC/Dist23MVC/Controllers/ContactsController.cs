@@ -97,12 +97,8 @@ namespace Dist23MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contacts contacts = db.Contacts.Find(id);
-            if (contacts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contacts);
+            ContactsViewModel cvm = new ContactsViewModel(id);
+            return View(cvm);
         }
 
         // POST: Contacts/Edit/5
@@ -110,8 +106,10 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ContactsEdit([Bind(Include = "pKey,DistKey,name,email,phone,password,AccessLvl")] Contacts contacts)
+        public ActionResult ContactsEdit(ContactsViewModel cvm)
         {
+            Contacts contacts = cvm.contact;
+
             if (ModelState.IsValid)
             {
                 db.Entry(contacts).State = EntityState.Modified;

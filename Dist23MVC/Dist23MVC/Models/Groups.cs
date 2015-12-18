@@ -14,5 +14,6 @@ namespace Dist23MVC.Models
         public string GroupName { get; set; }
         public string GroupNumber { get; set; }
         public int? ContactID { get; set; }
+        public bool isDistrict { get; set; }
     }
 }

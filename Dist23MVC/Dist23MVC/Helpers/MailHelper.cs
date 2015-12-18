@@ -48,24 +48,24 @@ namespace Dist23MVC.Helpers
             switch (emailTo)
             {
                 case "I need help":
-                    return LookupEmail("general");
+                    return LookupEmail("Webmaster", true);
                 case "Webmaster":
-                    return LookupEmail("Webmaster");
-                case "DCM (District Committee Member)":
-                    return LookupEmail("DCM");
+                    return LookupEmail("Webmaster", true);
+                case "DCM (District Committee Member, true)":
+                    return LookupEmail("DCM", true);
                 case "Public Information":
-                    return LookupEmail("PI");
+                    return LookupEmail("Public Information", true);
                 case "Treatment Chair":
-                    return LookupEmail("Treatment");
+                    return LookupEmail("Treatment", true);
                 case "Corrections Chair":
-                    return LookupEmail("Corrections");
+                    return LookupEmail("Corrections", true);
                 case "I am a professional needing information":
-                    return LookupEmail("CPC");
+                    return LookupEmail("CPC", true);
             }
             return "";
         }
 
-        private static string LookupEmail(string type)
+        private static string LookupEmail(string type,bool isDistrict)
         {
             
             using (Dist23Data db = new Dist23Data())
@@ -74,9 +74,10 @@ namespace Dist23MVC.Helpers
                     from contact in db.Contacts
                     join contactPosition in db.ContactPosition on contact.pKey equals contactPosition.ContactID
                     join positions in db.Positions on contactPosition.PositionID equals positions.pKey
+                    join groups in db.Groups on contactPosition.DistKey equals groups.DistKey
                     where positions.PositionName == type
                     where contact.DistKey == GlobalVariables.DistKey
-                    where contactPosition.GroupID == 0
+                    where groups.isDistrict == true
                     select contact;
                 return emailAddVar.FirstOrDefault().email;
                    

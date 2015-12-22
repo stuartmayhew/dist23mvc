@@ -35,7 +35,7 @@
                 <table align="center">
                     <tr>
                         <td>
-                            <h1>District 23 News</h1>
+                            <h1>District @GlobalVariables.DistNumber News</h1>
                         </td>
                     </tr>
                     @if (Session["loginName"] != null)
@@ -56,7 +56,7 @@
                     {
                         <tr>
                             <td class="newsItem">
-                                <hr size="5" style="font-weight: bold; background-color: #F4D453; height: 5px;" />
+                                <hr class="seperatorLine"/>
                                 <h2>@Html.DisplayFor(modelItem => item.Header)</h2>
                                 @Html.DisplayFor(modelItem => item.NewsText)<br />
                                 <a href="@Html.DisplayFor(modelItem=>item.NewsLink)" target="_blank">@Html.DisplayFor(modelItem => item.LinkText)</a><br />

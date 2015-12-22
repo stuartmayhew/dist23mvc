@@ -20,13 +20,23 @@ namespace Dist23MVC.Helpers
         const String SMTP_PASSWORD = "AqZ2UqLaCgyLYWM+bLngTJlrluc8NH3J5+mwShqwYTKP";  // Replace with your SMTP password.
 
         private static SmtpClient client = new SmtpClient(HOST, PORT);
-        public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination)
+        public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination,bool Lookup = false)
         {
             client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
             client.EnableSsl = true;
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
-            string emailTo = GetDestinationEmail(destination);
+            string emailTo = "";
+            if (Lookup)
+            {
+                emailTo = GetDestinationEmail(destination);
+
+            }
+            else
+            {
+                emailTo = GetDestinationEmail(destination);
+            }
+
             MailMessage mail = new MailMessage(fromAddress, emailTo);
             mail.Subject = "Email from website from " + nameFrom;
             mail.IsBodyHtml = true;
@@ -58,6 +68,7 @@ namespace Dist23MVC.Helpers
                 case "Treatment Chair":
                     return LookupEmail("Treatment", true);
                 case "Corrections Chair":
+                case "Corrections Committee":
                     return LookupEmail("Corrections", true);
                 case "I am a professional needing information":
                     return LookupEmail("CPC", true);

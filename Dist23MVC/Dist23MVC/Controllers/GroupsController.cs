@@ -17,7 +17,21 @@ namespace Dist23MVC.Controllers
         // GET: Groups
         public ActionResult GroupsIndex()
         {
-            return View(db.Groups.ToList());
+            List<GroupViewModel> gvmList = new List<GroupViewModel>();
+            var groupList = db.Groups.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+            foreach(Groups group in groupList)
+            {
+                GroupViewModel gvm = new GroupViewModel();
+                gvm.group = group;
+                ContactPosition cp = db.ContactPosition.Where(x => x.DistKey == GlobalVariables.DistKey).Where(x => x.GroupID == group.pKey).Where(x => x.PositionID == 2).FirstOrDefault();
+                if (cp != null)
+                {
+                    int GSRID = cp.ContactID;
+                    gvm.contact = db.Contacts.Where(x => x.pKey == GSRID).FirstOrDefault();
+                }
+                gvmList.Add(gvm);
+            }
+            return View(gvmList);
         }
 
         // GET: Groups/Details/5

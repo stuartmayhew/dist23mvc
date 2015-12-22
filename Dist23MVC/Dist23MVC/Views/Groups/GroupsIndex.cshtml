@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dist23MVC.Models.Groups>
+﻿@model IEnumerable<Dist23MVC.Models.GroupViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,21 +7,18 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "GroupsCreate")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DistKey)
+            @Html.DisplayNameFor(model => model.group.GroupName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupName)
+            @Html.DisplayNameFor(model => model.group.GroupNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactID)
+            @Html.Label("GSR")
         </th>
         <th></th>
     </tr>
@@ -29,21 +26,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DistKey)
+            @Html.DisplayFor(modelItem => item.group.GroupName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GroupName)
+            @Html.DisplayFor(modelItem => item.group.GroupNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GroupNumber)
+            @Html.DisplayFor(modelItem => item.contact.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContactID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pKey })
+            @Html.ActionLink("Edit", "GroupsEdit", new { id=item.pKey }) |
+            @Html.ActionLink("Details", "GroupsDetails", new { id=item.pKey }) |
+            @Html.ActionLink("Delete", "GroupsDelete", new { id=item.pKey })
         </td>
     </tr>
 }

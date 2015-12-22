@@ -98,13 +98,11 @@ font-family:Arial Black;
 font-weight:bold;
 }
 
-.newsItem
+.seperatorLine
 {
-height:auto;
-background-color:#FCFBEF;
-font-size:inherit;
-font-family:Arial Black;
-font-weight:bold;
+    font-weight: bold;
+    background-color:darkgoldenrod;
+    height: 5px;
 }
 
 .k-popup .k-list .k-item {

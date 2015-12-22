@@ -95,6 +95,23 @@ namespace Dist23MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Volunteer(FormCollection fData)
+        {
+            string emailFrom = fData["reqEmail"].ToString();
+            string nameFrom = fData["reqName"].ToString();
+            string reqPhone = fData["reqPhone"].ToString();
+            string commTitle = fData["commTitle"].ToString();
+            string mailBody = "Volunteer from " + nameFrom + " email:" + emailFrom + " phone:" + reqPhone;
+            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, commTitle,true))
+            {
+                ViewBag.LoginReq = "Request sent. You'll here from us";
+            }
+            else
+            {
+                ViewBag.LoginReq = "Request failed, try again later.";
+            }
+            return View("Login");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

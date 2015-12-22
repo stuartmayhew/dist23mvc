@@ -30,7 +30,7 @@
         {
             <tr>
                 <td class="newsItem">
-                    <hr size="5" style="font-weight: bold; background-color: #F4D453; height: 5px;" />
+                    <hr class="seperatorLine" />
                     <h2>@Html.DisplayFor(modelItem => item.LinkTitle)</h2>
                     <h4>@Html.DisplayFor(modelItem => item.LinkHeader)</h4>
                     <a href="@Html.DisplayFor(modelItem => item.LinkURL)" target="_blank"> @Html.DisplayFor(modelItem => item.LinkText)</a><br />
@@ -44,4 +44,49 @@
                 </tr>
         }
     </table>
+
+</div>
+<hr class="seperatorLine" />
+<div class="col-md-10 col-lg-offset-2">
+    <h4>Volunteer to help out on the @ViewBag.CommTitle below</h4>
+    @using (Html.BeginForm("Volunteer", "CommLinks"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    Your name:
+                    @Html.Editor("reqName")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    Enter your email address:
+                    @Html.Editor("reqEmail")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    Enter your phone number:
+                    @Html.Editor("reqPhone")
+                </div>
+            </div>
+            <div class="col-md-12">
+                @if (ViewBag.LoginReq != null)
+                {
+                    @Html.Raw(ViewBag.LoginReq);
+                }
+                <input type="hidden" id="commTitle" value="@ViewBag.CommTitle"/>;
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Email Chairperson" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
 </div>

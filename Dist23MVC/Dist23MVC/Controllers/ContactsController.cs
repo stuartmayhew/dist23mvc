@@ -109,6 +109,7 @@ namespace Dist23MVC.Controllers
         public ActionResult ContactsEdit(ContactsViewModel cvm)
         {
             Contacts contacts = cvm.contact;
+            contacts.DistKey = GlobalVariables.DistKey;
 
             if (ModelState.IsValid)
             {
@@ -121,23 +122,6 @@ namespace Dist23MVC.Controllers
 
         // GET: Contacts/Delete/5
         public ActionResult ContactsDelete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contacts contacts = db.Contacts.Find(id);
-            if (contacts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contacts);
-        }
-
-        // POST: Contacts/Delete/5
-        [HttpPost, ActionName("ContactsDelete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult ContactsDeleteConfirmed(int id)
         {
             Contacts contacts = db.Contacts.Find(id);
             db.Contacts.Remove(contacts);

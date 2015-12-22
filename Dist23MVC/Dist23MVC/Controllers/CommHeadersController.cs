@@ -17,7 +17,7 @@ namespace Dist23MVC.Controllers
         // GET: CommHeaders
         public ActionResult CommIndex()
         {
-            return View(db.CommHeaders.ToList());
+            return View(db.CommHeaders.Where(x => x.DistKey == GlobalVariables.DistKey).ToList());
         }
 
         // GET: CommHeaders/Details/5

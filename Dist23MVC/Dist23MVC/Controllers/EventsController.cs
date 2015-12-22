@@ -22,18 +22,25 @@ namespace Dist23MVC.Controllers
             List<EventViewModel> evmList = new List<EventViewModel>();
             using (Dist23Data db = new Dist23Data())
             {
-                var EventCatList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
-                foreach (var ecat in EventCatList)
+                var OtherCatList = db.OtherDistEvents.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+                foreach (var OtherDKey in OtherCatList)
                 {
-                    EventViewModel evm = new EventViewModel();
-                    evm.EventCatName = ecat.EventCatName;
-                    var EventsList = db.Events.Where(x => x.EventCat == ecat.pKey);
-                    foreach (var eve in EventsList)
+                    int dKey = OtherDKey.ShowDistKey;
+                    var EventCatList = db.EventCat.Where(x => x.DistKey == dKey).ToList();
+                    foreach (var ecat in EventCatList)
                     {
-                        evm.Events.Add(eve);
+                        EventViewModel evm = new EventViewModel();
+                        evm.EventCatName = ecat.EventCatName;
+                        var EventsList = db.Events.Where(x => x.EventCat == ecat.pKey);
+                        foreach (var eve in EventsList)
+                        {
+                            evm.Events.Add(eve);
+                        }
+                        if (db.Events.Where(x => x.EventCat == ecat.pKey).Any())
+                            evmList.Add(evm);
                     }
-                    evmList.Add(evm);
                 }
+
 
             }
             return View(evmList);
@@ -137,6 +144,7 @@ namespace Dist23MVC.Controllers
             Events events = db.Events.Find(id);
             db.Events.Remove(events);
             db.SaveChanges();
+            DeleteFlyer(events.Eventlink);
             return RedirectToAction("EventsIndex");
         }
 
@@ -205,6 +213,26 @@ namespace Dist23MVC.Controllers
                 nextKey = id;
             }
             return "event_" + GlobalVariables.DistNumber + "_" + nextKey.ToString() + ext;
+        }
+
+        private void DeleteFlyer(string path)
+        {
+            if (path.Contains("http"))
+                return;
+            path = path.Replace("..", "~");
+            string filePath = Server.MapPath(path);
+            if (System.IO.File.Exists(filePath))
+            {
+                try
+                {
+                    System.IO.File.Delete(filePath);
+                }
+                catch
+                {
+
+                }
+            }
+
         }
 
         protected override void Dispose(bool disposing)

@@ -26,6 +26,7 @@ namespace Dist23MVC.Controllers
             CommHeaders comm = db.CommHeaders.Where(h => h.pKey == id).FirstOrDefault();
             ViewBag.CommTitle = comm.CommName;
             ViewBag.CommDetail = comm.CommHeader;
+            ViewBag.CommKey = comm.pKey;
             List<CommLinks> commLinks = db.CommLinks.Where(c => c.CommKey == id).ToList();
             if (commLinks == null)
             {

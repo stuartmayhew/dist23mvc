@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dist23MVC.Models.Meetings>
+﻿@model IEnumerable<Dist23MVC.Models.MeetingViewModel>
 
 @{
     ViewBag.Title = "View";
@@ -14,25 +14,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Day)
+            @Html.DisplayNameFor(model => model.meeting.Day)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.meeting.Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.type)
+            @Html.DisplayNameFor(model => model.meeting.type)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.topic)
+            @Html.DisplayNameFor(model => model.meeting.topic)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.aaGroup)
+            @Html.DisplayNameFor(model => model.GroupName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.location)
+            @Html.DisplayNameFor(model => model.Location)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.city)
+            @Html.DisplayNameFor(model => model.meeting.city)
         </th>
         <th></th>
     </tr>
@@ -40,25 +40,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Day)
+            @Html.DisplayFor(modelItem => item.meeting.Day)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            @Html.DisplayFor(modelItem => item.meeting.Time)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.type)
+            @Html.DisplayFor(modelItem => item.meeting.type)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.topic)
+            @Html.DisplayFor(modelItem => item.meeting.topic)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.aaGroup)
+            @Html.DisplayFor(modelItem => item.GroupName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.location)
+            @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.city)
+            @Html.DisplayFor(modelItem => item.meeting.city)
         </td>
         <td>
             @Html.ActionLink("Edit", "MeetingEdit", new { id = item.pKey }) |
@@ -66,5 +66,7 @@
         </td>
     </tr>
 }
+    @Html.ActionLink("Edit Locations","Index","Locations")
+
 
 </table>

@@ -14,8 +14,8 @@ namespace Dist23MVC.Models
         public string Time { get; set; }
         public string type { get; set; }
         public string topic { get; set; }
-        public string aaGroup { get; set; }
-        public string location { get; set; }
+        public int GroupId { get; set; }
+        public int LocationID { get; set; }
         public string city { get; set; }
         public int DistKey { get; set; }
 

@@ -61,8 +61,19 @@ namespace Dist23MVC.Controllers
             {
                 return View("../Login/Login");
             }
-            IEnumerable<Meetings> results = db.Meetings.ToList();
-            return View(results);
+            List<MeetingViewModel> meetingList = new List<MeetingViewModel>();
+
+            var mtgList = db.Meetings.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+            foreach (Meetings meeting in mtgList)
+            {
+                MeetingViewModel mvm = new MeetingViewModel();
+                mvm.pKey = meeting.pKey;
+                mvm.meeting = db.Meetings.Where(x => x.pKey == meeting.pKey).FirstOrDefault();
+                mvm.Location = db.Locations.FirstOrDefault(x => x.pKey == meeting.LocationID).Location;
+                mvm.GroupName = db.Groups.FirstOrDefault(x => x.pKey == meeting.GroupId).GroupName;
+                meetingList.Add(mvm);
+            }
+            return View(meetingList);
         }
 
         // GET: Meetings/Details/5
@@ -83,27 +94,7 @@ namespace Dist23MVC.Controllers
         // GET: Meetings/Create
         public ActionResult MeetingCreate()
         {
-            var aaGroup = db.Meetings.Select(x => new SelectListItem
-            {
-                Value = x.aaGroup,
-                Text = x.aaGroup,
-            }).Distinct();
-            ViewBag.aaGroup = aaGroup;
-
-            var location = db.Meetings.Select(x => new SelectListItem
-            {
-                Value = x.location,
-                Text = x.location,
-            }).Distinct();
-            ViewBag.location = location;
-            
-            var Day = db.Meetings.Select(x => new SelectListItem
-            {
-                Value = x.Day,
-                Text = x.Day,
-            }).Distinct();
-            ViewBag.Day = Day;
-
+            BuildGroupLists();
             return View();
         }
 
@@ -128,27 +119,6 @@ namespace Dist23MVC.Controllers
         // GET: Meetings/Edit/5
         public ActionResult MeetingEdit(int? id)
         {
-            var aaGroup = db.Groups.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
-            {
-                Value = x.pKey.ToString(),
-                Text = x.GroupName,
-            }).Distinct();
-
-            ViewBag.aaGroup = aaGroup;
-
-            var location = db.Locations.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
-            {
-                Value = x.pKey.ToString(),
-                Text = x.Location,
-            }).Distinct();
-            ViewBag.location = location;
-
-            var Day = db.Meetings.Select(x => new SelectListItem
-            {
-                Value = x.Day,
-                Text = x.Day,
-            }).Distinct();
-            ViewBag.Day = Day;
 
             if (id == null)
             {
@@ -159,6 +129,7 @@ namespace Dist23MVC.Controllers
             {
                 return HttpNotFound();
             }
+            BuildGroupLists();
             return View(meetings);
         }
 
@@ -229,6 +200,30 @@ namespace Dist23MVC.Controllers
         public void DownloadMeetings()
         {
             Dist23MVC.Helpers.PrintMeetingHelper.MakeMeetingPDF();
+        }
+
+        private void BuildGroupLists()
+        {
+            var GroupList = db.Groups.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
+            {
+                Value = x.pKey.ToString(),
+                Text = x.GroupName,
+            });
+            ViewData["GroupID"] = GroupList;
+
+            var LocationList = db.Locations.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
+            {
+                Value = x.pKey.ToString(),
+                Text = x.Location,
+            }).Distinct();
+            ViewData["LocationID"] = LocationList;
+
+            var Day = db.Meetings.Select(x => new SelectListItem
+            {
+                Value = x.Day,
+                Text = x.Day,
+            }).Distinct();
+            ViewData["Day"] = Day;
         }
 
         protected override void Dispose(bool disposing)

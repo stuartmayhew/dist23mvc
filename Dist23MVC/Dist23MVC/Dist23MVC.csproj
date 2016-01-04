@@ -138,12 +138,14 @@
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinksController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\PhoneListsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelperExt.cs" />
     <Compile Include="Helpers\LoginHelpers.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
     <Compile Include="Helpers\PrintMeetingHelper.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MeetingsList.cs" />
     <Compile Include="Models\Meetings.cs" />
+    <Compile Include="Models\MeetingViewModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\Positions.cs" />
@@ -319,6 +322,10 @@
     <Content Include="Views\Groups\GroupsIndex.cshtml" />
     <Content Include="Views\Contacts\ContactsDetails.cshtml" />
     <Content Include="Views\Contacts\PositionCreate.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Locations\MapLocation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

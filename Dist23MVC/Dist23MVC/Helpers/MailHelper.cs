@@ -20,23 +20,14 @@ namespace Dist23MVC.Helpers
         const String SMTP_PASSWORD = "AqZ2UqLaCgyLYWM+bLngTJlrluc8NH3J5+mwShqwYTKP";  // Replace with your SMTP password.
 
         private static SmtpClient client = new SmtpClient(HOST, PORT);
-        public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination,bool Lookup = false)
+        public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination,string Type = "")
         {
             client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
             client.EnableSsl = true;
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
             string emailTo = "";
-            if (Lookup)
-            {
                 emailTo = GetDestinationEmail(destination);
-
-            }
-            else
-            {
-                emailTo = GetDestinationEmail(destination);
-            }
-
             MailMessage mail = new MailMessage(fromAddress, emailTo);
             mail.Subject = "Email from website from " + nameFrom;
             mail.IsBodyHtml = true;
@@ -109,15 +100,21 @@ namespace Dist23MVC.Helpers
 
         private static string BuildBody(string type)
         {
+            string emailStr = "";
             switch (type)
             {
                 case "confirm":
-                     string emailStr = "";
                      emailStr += "<p>Thanks for contacting District " + GlobalVariables.DistNumber + " AA.</p>";
                      emailStr += "<p>Someone will get back to you as soon as possible</p><br/>";
                      emailStr += "<p>Thanks,<br>";
                      emailStr += "District " + GlobalVariables.DistNumber + " AA";
                      return emailStr;
+                case "volunteer":
+                    emailStr += "<p>Thanks for volunteering for service.</p>";
+                    emailStr += "<p>Someone will get back to you as soon as possible</p><br/>";
+                    emailStr += "<p>Thanks,<br>";
+                    emailStr += "District " + GlobalVariables.DistNumber + " AA";
+                    return emailStr;
             }
             return "";
         }

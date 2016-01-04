@@ -15,9 +15,12 @@ namespace Dist23MVC.Controllers
         private Dist23Data db = new Dist23Data();
 
         // GET: CommLinks/Create
-        public ActionResult CommLinkCreate()
+        public ActionResult CommLinkCreate(int commKey)
         {
-            return View();
+            CommLinks newCommLink = new CommLinks();
+            newCommLink.CommKey = commKey;
+            newCommLink.DistKey = GlobalVariables.DistKey;
+            return View(newCommLink);
         }
 
         // POST: CommLinks/Create
@@ -32,7 +35,7 @@ namespace Dist23MVC.Controllers
             {
                 db.CommLinks.Add(commLinks);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CommLinks", "CommHeaders", new { id = commLinks.CommKey });
             }
 
             return View(commLinks);
@@ -62,6 +65,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                commLinks.DistKey = GlobalVariables.DistKey;
                 db.Entry(commLinks).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("CommLinks","CommHeaders",new { id = commLinks.CommKey });
@@ -92,7 +96,7 @@ namespace Dist23MVC.Controllers
             CommLinks commLinks = db.CommLinks.Find(id);
             db.CommLinks.Remove(commLinks);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CommIndex");
         }
 
         public ActionResult Volunteer(FormCollection fData)
@@ -100,9 +104,11 @@ namespace Dist23MVC.Controllers
             string emailFrom = fData["reqEmail"].ToString();
             string nameFrom = fData["reqName"].ToString();
             string reqPhone = fData["reqPhone"].ToString();
-            string commTitle = fData["commTitle"].ToString();
-            string mailBody = "Volunteer from " + nameFrom + " email:" + emailFrom + " phone:" + reqPhone;
-            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, commTitle,true))
+            string commTitle = fData[5].ToString();
+            string commKey = fData[4].ToString();
+            
+            string mailBody = "Volunteer for " + commTitle + " from " + nameFrom + " email:" + emailFrom + " phone:" + reqPhone;
+            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, commTitle,"Volunteer"))
             {
                 ViewBag.LoginReq = "Request sent. You'll here from us";
             }
@@ -110,7 +116,7 @@ namespace Dist23MVC.Controllers
             {
                 ViewBag.LoginReq = "Request failed, try again later.";
             }
-            return View("Login");
+            return RedirectToAction("CommLinks", "CommHeaders",new { id = Int32.Parse(commKey) });
         }
         protected override void Dispose(bool disposing)
         {

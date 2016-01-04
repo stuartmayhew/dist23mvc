@@ -18,7 +18,7 @@ namespace Dist23MVC.Models
         public string aaGroup { get; set; }
         public string location { get; set; }
         public string city { get; set; }
-        public string EmbedURL { get; set; }
+        public string Address { get; set; }
         public string hours { get; set; }
         public string minutes { get; set; }
         public int DistKey { get; set; }
@@ -51,8 +51,8 @@ namespace Dist23MVC.Models
                                     this.topic = reader[4].ToString();
                                     this.aaGroup = reader[5].ToString();
                                     this.location = reader[6].ToString();
-                                    this.city = reader[7].ToString();
-                                    this.EmbedURL = reader[8].ToString();
+                                    this.Address = reader[7].ToString();
+                                    this.city = reader[8].ToString();
                                     this.hours = reader[9].ToString();
                                     this.minutes = reader[10].ToString();
                             }

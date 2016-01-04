@@ -129,6 +129,14 @@ namespace Dist23MVC.Controllers
             return RedirectToAction("ContactsIndex");
         }
 
+        public ActionResult ContactPositionDelete(int? id)
+        {
+            ContactPosition cp = db.ContactPosition.Find(id);
+            db.ContactPosition.Remove(cp);
+            db.SaveChanges();
+            return RedirectToAction("ContactsDetails");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

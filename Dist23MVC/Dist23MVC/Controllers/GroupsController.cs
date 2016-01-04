@@ -23,6 +23,7 @@ namespace Dist23MVC.Controllers
             {
                 GroupViewModel gvm = new GroupViewModel();
                 gvm.group = group;
+                gvm.pKey = group.pKey;
                 ContactPosition cp = db.ContactPosition.Where(x => x.DistKey == GlobalVariables.DistKey).Where(x => x.GroupID == group.pKey).Where(x => x.PositionID == 2).FirstOrDefault();
                 if (cp != null)
                 {
@@ -41,12 +42,17 @@ namespace Dist23MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Groups groups = db.Groups.Find(id);
-            if (groups == null)
+            Groups group = db.Groups.Find(id);
+            GroupViewModel gvm = new GroupViewModel();
+            gvm.pKey = group.pKey;
+            gvm.group = group;
+            ContactPosition cp = db.ContactPosition.Where(x => x.DistKey == GlobalVariables.DistKey).Where(x => x.GroupID == group.pKey).Where(x => x.PositionID == 2).FirstOrDefault();
+            if (cp != null)
             {
-                return HttpNotFound();
+                int GSRID = cp.ContactID;
+                gvm.contact = db.Contacts.Where(x => x.pKey == GSRID).FirstOrDefault();
             }
-            return View(groups);
+            return View(gvm);
         }
 
         // GET: Groups/Create

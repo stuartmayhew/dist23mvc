@@ -1,4 +1,6 @@
-﻿@model Dist23MVC.Models.Groups
+﻿@using Dist23MVC.Helpers
+@model Dist23MVC.Models.GroupViewModel
+
 
 @{
     ViewBag.Title = "Details";
@@ -11,40 +13,47 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DistKey)
+            @Html.DisplayNameFor(model => model.group.GroupName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DistKey)
+            @Html.DisplayFor(model => model.group.GroupName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GroupName)
+            @Html.DisplayNameFor(model => model.group.GroupNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GroupName)
+            @Html.DisplayFor(model => model.group.GroupNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GroupNumber)
+            @Html.Label("GSR")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GroupNumber)
+            @Html.DisplayFor(model => model.contact.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ContactID)
+            @Html.Label("GSR Phone")
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ContactID)
+            @Html.DisplayFor(model => model.contact.phone)
         </dd>
 
+        <dt>
+            @Html.Label("GSR Email")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contact.email)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.pKey }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "GroupsEdit", new { id = Model.pKey }) |
+    @Html.ActionLink("Back to List", "GroupsIndex")
 </p>

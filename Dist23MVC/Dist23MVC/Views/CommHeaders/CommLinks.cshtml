@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.ActionLink("Add New", "CommLinkCreate","CommLinks")
+                    @Html.ActionLink("Add New", "CommLinkCreate","CommLinks",new { commKey = ViewContext.RouteData.Values["id"] },null)
                 </td>
             </tr>
         }
@@ -78,9 +78,10 @@
             <div class="col-md-12">
                 @if (ViewBag.LoginReq != null)
                 {
-                    @Html.Raw(ViewBag.LoginReq);
+                    @Html.Label("@ViewBag.LoginReq");
                 }
-                <input type="hidden" id="commTitle" value="@ViewBag.CommTitle"/>;
+                <input type="hidden" name="CommKey" id="CommKey" value="@ViewBag.CommKey" />
+                <input type="hidden" name="commTitle "id="commTitle" value="@ViewBag.CommTitle"/>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

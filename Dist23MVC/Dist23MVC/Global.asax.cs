@@ -51,6 +51,9 @@ namespace Dist23MVC
                 GlobalVariables.StyleSheet = dr["DistStyle"].ToString();
                 GlobalVariables.SiteName = "AA District " + DistKey.ToString();
                 GlobalVariables.DomainName = dr["DomainName"].ToString();
+                GlobalVariables.Hotline = dr["HotlinePh"].ToString();
+                GlobalVariables.AltHotline = dr["AltHotline"].ToString();
+                GlobalVariables.AltHoltlineMsg =  dr["AltHotlineMsg"].ToString();
                 GlobalVariables.isMobile = false;
             }
             dg.KillReader(dr);
@@ -128,6 +131,9 @@ namespace Dist23MVC
         public static string StyleSheet { get; set; }
         public static string SiteName { get; set; }
         public static string DomainName { get; set; }
+        public static string Hotline { get; set; }
+        public static string AltHotline { get; set; }
+        public static string AltHoltlineMsg { get; set; }
         public static bool isMobile { get; set; }
     }
 }

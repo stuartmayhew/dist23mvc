@@ -66,18 +66,18 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.aaGroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Group")
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.aaGroup, ViewBag.aaGroup as SelectList, htmlAttributes: new { @class = "control-label col-md-6" })
-                @Html.ValidationMessageFor(model => model.aaGroup, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.GroupId, ViewBag.GroupList as SelectList, htmlAttributes: new { @class = "control-label col-md-6" })
+                @Html.ValidationMessageFor(model => model.GroupId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.location, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocationID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.location, ViewBag.location as SelectList, htmlAttributes: new { @class = "control-label col-md-6" })
-                @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.LocationID, ViewBag.LocationList as SelectList, htmlAttributes: new { @class = "control-label col-md-6" })
+                @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
             </div>
         </div>
 

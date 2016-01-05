@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using Dist23MVC.Models;
 using System.IO;
 
-
 namespace Dist23MVC.Controllers
 {
     public class EventsController : Controller

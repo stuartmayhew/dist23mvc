@@ -52,7 +52,7 @@ namespace Dist23MVC.Controllers
             {
                 db.Links.Add(links);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("LinksIndex");
             }
 
             return View(links);
@@ -84,7 +84,7 @@ namespace Dist23MVC.Controllers
             {
                 db.Entry(links).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("LinksIndex");
             }
             return View(links);
         }
@@ -112,7 +112,12 @@ namespace Dist23MVC.Controllers
             Links links = db.Links.Find(id);
             db.Links.Remove(links);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("LinksIndex");
+        }
+
+        public ActionResult Calendar()
+        {
+            return View("Calendar");
         }
 
         protected override void Dispose(bool disposing)

@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using Dist23MVC.Models;
 
 namespace Dist23MVC
 {
@@ -32,7 +33,7 @@ namespace Dist23MVC
             HttpContext context = app.Context;
 
             string host = FirstRequestInitialisation.Initialise(context);
-            //dg.RunCommand("INSERT INTO hosts(HostURL) values('" + host + "')");
+
             try
             {
                 DistKey = dg.GetScalarInteger("SELECT DistKey FROM SiteConfig WHERE DistURL='" + host + "'");

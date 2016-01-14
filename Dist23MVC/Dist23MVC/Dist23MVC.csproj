@@ -207,7 +207,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GoogleCalendarHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExt.cs" />
     <Compile Include="Helpers\LoginHelpers.cs" />
     <Compile Include="Helpers\MailHelper.cs" />
@@ -233,19 +232,13 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\Positions.cs" />
+    <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -307,7 +300,6 @@
     <Content Include="Content\kendo\fonts\DejaVu\DejaVuSerif.ttf" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
-    <Content Include="WebForm1.aspx" />
     <None Include="Properties\PublishProfiles\area1.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -397,6 +389,7 @@
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Locations\MapLocation.cshtml" />
+    <Content Include="Views\Links\Calendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

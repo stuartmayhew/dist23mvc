@@ -38,7 +38,6 @@
                     <li>@Html.ActionLink("Events", "EventsIndex", "Events")</li>
                     <li>@Html.ActionLink("Links", "LinksIndex", "Links")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
-                    <li>@Html.ActionLink("Committees", "CommIndex", "CommHeaders")</li>
                     @if (Session["LoginName"] == null)
                     {
                         <li>@Html.ActionLink("Login", "Login", "Login")</li>
@@ -48,6 +47,7 @@
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                         <li>@Html.ActionLink("Servants", "ContactsIndex", "Contacts")</li>
                         <li>@Html.ActionLink("Groups", "GroupsIndex", "Groups")</li>
+                        <li><a href="~/AllServants.aspx" target="_blank">All Servants Demo</a></li>
 
                     }
                 </ul>

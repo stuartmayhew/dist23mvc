@@ -61,6 +61,7 @@ namespace Dist23MVC.Helpers
                 case "Corrections Chair":
                 case "Corrections Committee":
                     return LookupEmail("Corrections", true);
+                case "Cooperation With The Professional Community":
                 case "I am a professional needing information":
                     return LookupEmail("CPC", true);
             }

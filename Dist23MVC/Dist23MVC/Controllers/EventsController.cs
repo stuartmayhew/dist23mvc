@@ -11,6 +11,7 @@ using System.IO;
 
 namespace Dist23MVC.Controllers
 {
+    [ValidateInput(false)]
     public class EventsController : Controller
     {
         private Dist23Data db = new Dist23Data();

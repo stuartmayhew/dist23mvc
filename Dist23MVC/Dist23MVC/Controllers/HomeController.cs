@@ -15,6 +15,7 @@ namespace Dist23MVC.Controllers
 
         public ActionResult Index()
         {
+            InitGlobalVars();
             var newsItems = db.News.Where(n => n.DistKey == GlobalVariables.DistKey).OrderBy(n => n.ListOrder).ToList();
             return View(newsItems);
         }
@@ -97,5 +98,20 @@ namespace Dist23MVC.Controllers
             NextMeeting nextMeeting = new NextMeeting();
             return View("NextMeeting",nextMeeting);
         }
+
+        public void InitGlobalVars()
+        {
+            Session["DistNumber"] = GlobalVariables.DistNumber;
+            Session["DistKey"] = GlobalVariables.DistKey;
+            Session["BannerText"] = GlobalVariables.BannerText;
+            Session["BannerSubText"] = GlobalVariables.BannerSubText;
+            Session["StyleSheet"] = GlobalVariables.StyleSheet;
+            Session["SiteName"] = GlobalVariables.SiteName;
+            Session["DomainName"] = GlobalVariables.DomainName;
+            Session["Hotline"] = GlobalVariables.Hotline;
+            Session["AltHotline"] = GlobalVariables.AltHotline;
+            Session["AltHoltlineMsg"] = GlobalVariables.AltHoltlineMsg;
+            Session["isMobile"] = GlobalVariables.isMobile;
+    }
     }
 }

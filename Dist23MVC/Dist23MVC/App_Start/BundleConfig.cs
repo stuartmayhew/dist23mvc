@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using Dist23MVC.Models;
 
 namespace Dist23MVC
 {
@@ -17,10 +18,11 @@ namespace Dist23MVC
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
-            string distKey = HttpContext.Current.Session["currDist"].ToString();
+            //string distKey = HttpContext.Current.Session["currDist"].ToString();
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/bootstrap.min.css")
-                .Include(GlobalVariables.StyleSheet));
+                .Include(GlobalVariables.StyleSheet)
+                );
 
             bundles.Add(new StyleBundle("~/Content/kendo/css")
                 .Include("~/Content/kendo/kendo.common-bootstrap.min.css")

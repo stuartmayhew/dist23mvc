@@ -101,17 +101,9 @@ namespace Dist23MVC.Controllers
 
         public void InitGlobalVars()
         {
-            Session["DistNumber"] = GlobalVariables.DistNumber;
-            Session["DistKey"] = GlobalVariables.DistKey;
-            Session["BannerText"] = GlobalVariables.BannerText;
-            Session["BannerSubText"] = GlobalVariables.BannerSubText;
-            Session["StyleSheet"] = GlobalVariables.StyleSheet;
-            Session["SiteName"] = GlobalVariables.SiteName;
-            Session["DomainName"] = GlobalVariables.DomainName;
-            Session["Hotline"] = GlobalVariables.Hotline;
-            Session["AltHotline"] = GlobalVariables.AltHotline;
-            Session["AltHoltlineMsg"] = GlobalVariables.AltHoltlineMsg;
-            Session["isMobile"] = GlobalVariables.isMobile;
-    }
+            Uri uri = System.Web.HttpContext.Current.Request.Url;
+            string host = uri.Scheme + Uri.SchemeDelimiter + uri.Host + ":" + uri.Port;
+            GlobalVariables.InitVars(host,System.Web.HttpContext.Current);
+        }
     }
 }

@@ -22,7 +22,7 @@
             columns.Bound(p => p.Time).HeaderTemplate("<label for='Time'>Time</label>");
             columns.Bound(p => p.type).HeaderTemplate("<label for='type'>Type</label>");
             columns.Bound(p => p.topic).HeaderTemplate("<label for='topic'>Topic</label>");
-            if (!GlobalVariables.isMobile)
+            if (!(bool)Session["isMobile"])
             {
                 columns.Bound(p => p.GroupName).HeaderTemplate("<label for='aaGroup'>Group</label>");
                 columns.Bound(p => p.location).HeaderTemplate("<label for='location'>Location</label>");

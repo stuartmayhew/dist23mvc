@@ -15,9 +15,10 @@ namespace Dist23MVC.Models
         public int EventCat { get; set; }
         [DataType(DataType.MultilineText)]
         public string EventName { get; set; }
-        public string Eventlink  { get; set; }
+        public string Eventlink { get; set; }
         public string EventLinkText { get; set; }
-        public string EventCatName { get; set; }
+        public bool? ShowRegisterLink { get; set; }
+        public DateTime? EventDate { get; set; }
     }
 
     public class EventCat

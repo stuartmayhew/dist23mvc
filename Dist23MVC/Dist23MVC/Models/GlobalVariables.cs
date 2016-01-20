@@ -30,6 +30,8 @@ namespace Dist23MVC.Models
             using (Dist23Data db = new Dist23Data())
             {
                 SiteConfig sc = db.SiteConfig.FirstOrDefault(x => x.DistURL == host);
+                if(sc == null)
+                    sc = db.SiteConfig.FirstOrDefault(x => x.DistKey == 23);
                 DistNumber = sc.DistKey.ToString();
                 DistKey = sc.DistKey;
                 BannerText = sc.BannerTitle;

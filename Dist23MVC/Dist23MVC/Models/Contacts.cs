@@ -12,5 +12,7 @@ namespace Dist23MVC.Models
         public string phone { get; set; }
         public string password { get; set; }
         public int AccessLvl { get; set; }
+        public string Address { get; set; }
+
     }
 }

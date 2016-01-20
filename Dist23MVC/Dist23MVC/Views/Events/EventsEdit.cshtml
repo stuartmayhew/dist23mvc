@@ -34,6 +34,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.EventLinkText, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventLinkText, new { htmlAttributes = new { @class = "form-control" } })
@@ -46,6 +54,13 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Eventlink, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Eventlink, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShowRegisterLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShowRegisterLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShowRegisterLink, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -64,6 +79,7 @@
 
 <div>
     @Html.ActionLink("Back to List", "EventsIndex")
+    @Html.ActionLink("Setup Registration","PaymentCreate","Payments", new { id = ViewContext.RouteData.Values["id"] },null)
 </div>
 
 @section Scripts {

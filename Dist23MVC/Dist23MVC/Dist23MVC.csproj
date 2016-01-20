@@ -210,6 +210,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\PhoneListsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,6 +239,7 @@
     <Compile Include="Models\MeetingViewModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
+    <Compile Include="Models\Payments.cs" />
     <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
@@ -403,6 +405,10 @@
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Locations\MapLocation.cshtml" />
     <Content Include="Views\Links\Calendar.cshtml" />
+    <Content Include="Views\Payments\PaymentsCreate.cshtml" />
+    <Content Include="Views\Payments\PaymentsDelete.cshtml" />
+    <Content Include="Views\Payments\PaymentsDetails.cshtml" />
+    <Content Include="Views\Payments\PaymentsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

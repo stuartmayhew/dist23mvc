@@ -15,7 +15,8 @@ namespace Dist23MVC.Controllers
 
         public ActionResult Index()
         {
-            InitGlobalVars();
+            if (Session["DistKey"] == null)
+                InitGlobalVars();
             var newsItems = db.News.Where(n => n.DistKey == GlobalVariables.DistKey).OrderBy(n => n.ListOrder).ToList();
             return View(newsItems);
         }

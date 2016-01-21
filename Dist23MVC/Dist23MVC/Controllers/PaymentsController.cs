@@ -36,8 +36,14 @@ namespace Dist23MVC.Controllers
         }
 
         // GET: Payments/Create
-        public ActionResult PaymentsCreate()
+        public ActionResult PaymentsCreate(int? id)
         {
+            Payments payment = new Payments();
+            payment.DistKey = (int)Session["DistKey"];
+            if (id != null)
+                payment.EventKey = (int)id;
+            payment.PaymentDate = DateTime.Now;
+            payment.PaymentType = "event";
             return View();
         }
 
@@ -50,6 +56,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 db.Payments.Add(payments);
                 db.SaveChanges();
                 return RedirectToAction("PaymentsIndex");

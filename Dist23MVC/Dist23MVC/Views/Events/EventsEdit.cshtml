@@ -78,8 +78,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "EventsIndex")
-    @Html.ActionLink("Setup Registration","PaymentCreate","Payments", new { id = ViewContext.RouteData.Values["id"] },null)
+    @Html.ActionLink("Back to List", "EventsIndex")<br />
+    @Html.ActionLink("Setup Registration","PaymentSetupsCreate","PaymentSetups", new { id = ViewContext.RouteData.Values["id"] },null)
 </div>
 
 @section Scripts {

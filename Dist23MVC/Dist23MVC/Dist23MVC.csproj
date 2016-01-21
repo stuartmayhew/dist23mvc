@@ -211,6 +211,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\PaymentSetupsController.cs" />
     <Compile Include="Controllers\PhoneListsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,6 +241,7 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\Payments.cs" />
+    <Compile Include="Models\PaymentSetup.cs" />
     <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
@@ -285,6 +287,7 @@
     <Content Include="Content\agents.css" />
     <Content Include="Content\Site11.css" />
     <Content Include="Content\Site23.css" />
+    <Content Include="error.htm" />
     <Content Include="Global.asax" />
     <Content Include="images\background11.png" />
     <Content Include="images\background23.png" />
@@ -409,6 +412,11 @@
     <Content Include="Views\Payments\PaymentsDelete.cshtml" />
     <Content Include="Views\Payments\PaymentsDetails.cshtml" />
     <Content Include="Views\Payments\PaymentsIndex.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsCreate.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsDelete.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsDetails.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsEdit.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

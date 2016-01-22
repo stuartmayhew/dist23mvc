@@ -52,10 +52,21 @@ namespace Dist23MVC.Controllers
             {
                 db.PaymentSetups.Add(paymentSetup);
                 db.SaveChanges();
+                if (paymentSetup.hasSpecial)
+                    return RedirectToAction("PaymentSpecCreate",new { id = paymentSetup.pKey });
                 return RedirectToAction("PaymentSetupsIndex");
             }
 
             return View(paymentSetup);
+        }
+
+        public ActionResult PaymentSpecCreate(int id)
+        {
+            PaymentSpecValues specVal = new PaymentSpecValues();
+            specVal.SpecialKey = id;
+            PaymentSetup paymentSetup = db.PaymentSetups.Find(id);
+            paymentSetup.paymentSpecValues.Add(specVal);
+            return View("PaymentSetupsEdit", paymentSetup);
         }
 
         // GET: PaymentSetups/Edit/5

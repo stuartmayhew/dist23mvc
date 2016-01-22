@@ -14,7 +14,7 @@ namespace Dist23MVC.Models
         public int EventKey { get; set; }
         public Decimal? Amount { get; set; }
         public bool hasSpecial { get; set; }
-        public string SpecialLable { get; set; }
+        public string ButtonLink { get; set; }
         public List<PaymentSpecValues> paymentSpecValues { get; set; }
     }
 

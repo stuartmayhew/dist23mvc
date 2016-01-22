@@ -46,7 +46,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PaymentSetupsCreate([Bind(Include = "pKey,DistKey,EventKey,Amount,hasSpecial,SpecialLable")] PaymentSetup paymentSetup)
+        public ActionResult PaymentSetupsCreate([Bind(Include = "pKey,DistKey,EventKey,Amount,hasSpecial,ButtonLink")] PaymentSetup paymentSetup)
         {
             if (ModelState.IsValid)
             {

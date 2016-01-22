@@ -39,6 +39,8 @@ namespace Dist23MVC.Controllers
         public ActionResult PaymentsCreate(int? id)
         {
             Payments payment = new Payments();
+            Events currEvent = db.Events.Find(id);
+            ViewBag.EventName = currEvent.EventName;
             payment.DistKey = (int)Session["DistKey"];
             if (id != null)
                 payment.EventKey = (int)id;

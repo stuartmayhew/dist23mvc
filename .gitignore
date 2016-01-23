@@ -140,7 +140,7 @@ publish/
 *.azurePubxml
 # TODO: Comment the next line if you want to checkin your web deploy settings 
 # but database connection strings (with potential passwords) will be unencrypted
-*.publishproj
+#*.publishproj
 
 # NuGet Packages
 *.nupkg
@@ -182,7 +182,7 @@ ClientBin/
 *.dbmdl
 *.dbproj.schemaview
 *.pfx
-*.publishsettings
+#*.publishsettings
 node_modules/
 orleans.codegen.cs
 

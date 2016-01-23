@@ -42,11 +42,20 @@
                         <hr size="2" style="font-weight: bold; background-color: #F4D453; height: 2px;" />
                         <h2>@Html.DisplayFor(modelItem => myEvent.EventName)</h2>
                         <a href="@Html.DisplayFor(modelItem => myEvent.Eventlink)" target="_blank"> @Html.DisplayFor(modelItem => myEvent.EventLinkText)</a><br />
+                        @if (myEvent.ShowRegisterLink == true)
+                        {
+                            @Html.ActionLink("Click here to register", "PaymentsCreate", "Payments", new { id = myEvent.pKey }, null)
+                        }
+
                         @if (Session["loginName"] != null)
                         {
                         <td>
                             @Html.ActionLink("Edit", "EventsEdit", new { id = myEvent.pKey }) |
                             @Html.ActionLink("Delete", "EventsDelete", new { id = myEvent.pKey })
+                            @if (myEvent.ShowRegisterLink == true)
+                            {
+                                @Html.ActionLink("Show Registrations", "PaymentsIndex", "Payments", new { id = myEvent.pKey }, null)
+                            }
                         </td>
                         }
                     </tr>

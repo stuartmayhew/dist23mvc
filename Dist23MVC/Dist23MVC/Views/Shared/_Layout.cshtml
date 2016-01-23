@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/nodrinking.png"/>
-    <title>@ViewBag.Title - @GlobalVariables.SiteName</title>
+    <title>@ViewBag.Title - @Session["SiteName"].ToString()</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/kendo/css")
 
@@ -38,7 +38,7 @@
                     <li>@Html.ActionLink("Events", "EventsIndex", "Events")</li>
                     <li>@Html.ActionLink("Links", "LinksIndex", "Links")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
-                    <li>@Html.ActionLink("Committees", "CommIndex", "CommHeaders")</li>
+                    <li>@Html.ActionLink("Service Committees", "CommIndex", "CommHeaders")</li>
                     @if (Session["LoginName"] == null)
                     {
                         <li>@Html.ActionLink("Login", "Login", "Login")</li>
@@ -48,6 +48,7 @@
                         <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
                         <li>@Html.ActionLink("Servants", "ContactsIndex", "Contacts")</li>
                         <li>@Html.ActionLink("Groups", "GroupsIndex", "Groups")</li>
+                        <li><a href="~/AllServants.aspx" target="_blank">All Servants Demo</a></li>
 
                     }
                 </ul>
@@ -57,12 +58,12 @@
     <div id="mainpic" class="container-fluid">
         <div class="row">
             <div class="col-xs-12 col-sm-9 col-md-7 col-lg-6">
-                <h1><strong>@GlobalVariables.BannerText</strong></h1>
+                <h1><strong>@Session["BannerText"].ToString()</strong></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-9 col-md-7 col-lg-6">
-                <h2>@GlobalVariables.BannerSubText</h2>
+                <h2>@Session["BannerSubText"].ToString()</h2>
             </div>
         </div>
     </div>

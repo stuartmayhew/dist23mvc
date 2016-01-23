@@ -42,5 +42,9 @@ namespace Dist23MVC.Models
 
 
         public System.Data.Entity.DbSet<Dist23MVC.Models.Groups> Groups { get; set; }
+
+        public System.Data.Entity.DbSet<Dist23MVC.Models.Payments> Payments { get; set; }
+
+        public System.Data.Entity.DbSet<Dist23MVC.Models.PaymentSetup> PaymentSetups { get; set; }
     }
 }

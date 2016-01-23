@@ -1,0 +1,58 @@
+﻿@model Dist23MVC.Models.PaymentSetup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentSetup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DistKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventKey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventKey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hasSpecial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hasSpecial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialLable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialLable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pKey }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

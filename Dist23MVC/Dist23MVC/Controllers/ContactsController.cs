@@ -50,7 +50,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ContactsCreate([Bind(Include = "pKey,DistKey,name,email,phone,password,AccessLvl")] Contacts contacts)
+        public ActionResult ContactsCreate([Bind(Include = "pKey,DistKey,name,email,phone,password,AccessLvl,Address")] Contacts contacts)
         {
             if (ModelState.IsValid)
             {

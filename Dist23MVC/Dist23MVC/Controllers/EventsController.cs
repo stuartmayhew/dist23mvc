@@ -11,6 +11,7 @@ using System.IO;
 
 namespace Dist23MVC.Controllers
 {
+    [ValidateInput(false)]
     public class EventsController : Controller
     {
         private Dist23Data db = new Dist23Data();
@@ -104,7 +105,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EventsEdit([Bind(Include = "pKey,DistKey,EventCat,EventName,Eventlink,EventLinkText")] Events events)
+        public ActionResult EventsEdit([Bind(Include = "pKey,DistKey,EventCat,EventName,Eventlink,EventLinkText,ShowRegisterLink,EventDate")] Events events)
         {
             if (Session["currFile"] != null)
             {

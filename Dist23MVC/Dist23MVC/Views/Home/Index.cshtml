@@ -15,7 +15,7 @@
             <p align="center">
                 If you need a to talk to someone about your problem, or a ride to a meeting, call us at @Session["Hotline"].ToString(). We'll come get you
             </p>
-            @if (@Session["AltHoltlineMsg"].ToString() != null)
+            @if (@Session["AltHoltlineMsg"] != null)
             {
                 <p align="center">
                     @Session["AltHoltlineMsg"].ToString() @Session["AltHotline"].ToString()

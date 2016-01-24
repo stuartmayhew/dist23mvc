@@ -21,5 +21,7 @@ namespace Dist23MVC.Models
         public string PaypalButton { get; set; }
         public string PaypalReturn { get; set; }
         public DateTime PaymentDate { get; set; }
+        public PaymentSetup paymentSetup { get; set; }
+        public List<PaymentSpecValues> paymentSpecValues {get;set;}
     }
 }

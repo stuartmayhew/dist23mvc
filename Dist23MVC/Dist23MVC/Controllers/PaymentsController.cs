@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Dist23MVC.Models;
+using System.Configuration;
 
 namespace Dist23MVC.Controllers
 {
@@ -40,13 +41,32 @@ namespace Dist23MVC.Controllers
         {
             Payments payment = new Payments();
             Events currEvent = db.Events.Find(id);
+            payment.paymentSetup = db.PaymentSetup.FirstOrDefault(x => x.EventKey == (int)id);
+            if (payment.paymentSetup.hasSpecial)
+            {
+                payment.paymentSpecValues = new List<PaymentSpecValues>();
+                Dist23MVC.Models.clsDataGetter dg = new Models.clsDataGetter(ConfigurationManager.ConnectionStrings["Dist23Data"].ConnectionString);
+                int paymentSetupKey = payment.paymentSetup.pKey;
+                string sql = "SELECT * FROM PaymentSpecValues WHERE PaymentSetupKey=" + paymentSetupKey.ToString();
+                System.Data.SqlClient.SqlDataReader dr = dg.GetDataReader(sql);
+                while (dr.Read())
+                {
+                    PaymentSpecValues psv = new PaymentSpecValues();
+                    psv.pKey = (int)dr["pKey"];
+                    psv.SpecialValue = dr["SpecialValue"].ToString();
+                    psv.SpecialAmount = (decimal)dr["SpecialAmount"];
+                    psv.PaymentSetupKey = paymentSetupKey;
+                    payment.paymentSpecValues.Add(psv);
+                }
+            }
+            payment.PaypalButton = payment.paymentSetup.ButtonLink;
             ViewBag.EventName = currEvent.EventName;
             payment.DistKey = (int)Session["DistKey"];
             if (id != null)
                 payment.EventKey = (int)id;
             payment.PaymentDate = DateTime.Now;
             payment.PaymentType = "event";
-            return View();
+            return View(payment);
         }
 
         // POST: Payments/Create

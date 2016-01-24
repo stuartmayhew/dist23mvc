@@ -15,18 +15,5 @@ namespace Dist23MVC.Models
         public Decimal? Amount { get; set; }
         public bool hasSpecial { get; set; }
         public string ButtonLink { get; set; }
-        public List<PaymentSpecValues> paymentSpecValues { get; set; }
     }
-
-    public class PaymentSpecValues
-    {
-        [Key]
-        public int pKey { get; set; }
-        public int SpecialKey { get; set; }
-        public string SpecialValue { get; set; }
-        public decimal SpecialAmount { get; set; }
-    }
-
-
-
 }

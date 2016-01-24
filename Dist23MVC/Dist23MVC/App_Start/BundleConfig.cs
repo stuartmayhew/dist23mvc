@@ -35,6 +35,9 @@ namespace Dist23MVC
 
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("/Scripts/modernizr", @"//ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.6.2.js")
+                .Include("~/Scripts/modernizr-2.6.2.js"));
+
             bundles.Add(new ScriptBundle("~/Scripts/jquery", @"//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js")
                 .Include("~/Scripts/jquery-{version}.js"));
 

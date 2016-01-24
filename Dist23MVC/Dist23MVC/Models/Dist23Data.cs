@@ -28,7 +28,6 @@ namespace Dist23MVC.Models
         public DbSet<Events> Events { get; set; }
         public DbSet<EventCat> EventCat { get; set; }
         public DbSet<OtherDistEvents> OtherDistEvents { get; set; }
-
         public DbSet<dayorder> dayorder { get; set; }
         public DbSet<Locations> Locations { get; set; }
         public DbSet<Links> Links { get; set; }
@@ -39,12 +38,10 @@ namespace Dist23MVC.Models
         public DbSet<Positions> Positions { get; set; }
         public DbSet<ContactPosition> ContactPosition { get; set; }
         public DbSet<SiteConfig> SiteConfig { get; set; }
+        public DbSet<Payments> Payments { get; set; }
+        public DbSet<PaymentSetup> PaymentSetup { get; set; }
+        public DbSet<PaymentSpecValues> PaymentSpecValues { get; set; }
+        public DbSet<Groups> Groups { get; set; }
 
-
-        public System.Data.Entity.DbSet<Dist23MVC.Models.Groups> Groups { get; set; }
-
-        public System.Data.Entity.DbSet<Dist23MVC.Models.Payments> Payments { get; set; }
-
-        public System.Data.Entity.DbSet<Dist23MVC.Models.PaymentSetup> PaymentSetups { get; set; }
     }
 }

@@ -103,7 +103,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MeetingCreate([Bind(Include = "pKey,Day,Time,type,topic,aaGroup,location,city")] Meetings meetings)
+        public ActionResult MeetingCreate([Bind(Include = "pKey,Day,Time,type,topic,GroupID,locationId,city")] Meetings meetings)
         {
             if (ModelState.IsValid)
             {

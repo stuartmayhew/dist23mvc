@@ -38,7 +38,7 @@ namespace Dist23MVC.Models
                 BannerSubText = sc.BannerSubTitle;
                 StyleSheet = sc.DistStyle;
                 SiteName = "AA District " + DistNumber;
-                DomainName = host;
+                DomainName = sc.DomainName;
                 Hotline = sc.HotlinePh;
                 AltHotline = sc.AltHotline;
                 AltHoltlineMsg = sc.AltHotlineMsg;

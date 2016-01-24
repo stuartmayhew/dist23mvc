@@ -17,7 +17,7 @@ namespace Dist23MVC.Controllers
         // GET: Links
         public ActionResult LinksIndex()
         {
-            return View(db.Links.OrderBy(x => x.ListOrder).ToList());
+            return View(db.Links.Where(x => x.DistKey == GlobalVariables.DistKey).OrderBy(x => x.ListOrder).ToList());
         }
 
         // GET: Links/Details/5
@@ -50,6 +50,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                links.DistKey = GlobalVariables.DistKey;
                 db.Links.Add(links);
                 db.SaveChanges();
                 return RedirectToAction("LinksIndex");
@@ -82,6 +83,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                links.DistKey = GlobalVariables.DistKey;
                 db.Entry(links).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("LinksIndex");

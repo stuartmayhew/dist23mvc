@@ -242,9 +242,18 @@
     <Compile Include="Models\NextMeeting.cs" />
     <Compile Include="Models\Payments.cs" />
     <Compile Include="Models\PaymentSetup.cs" />
+    <Compile Include="Models\PaymentSetupViewModel.cs" />
+    <Compile Include="Models\PaymentSpecValues.cs" />
     <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
+    <Compile Include="PaymentSpec.aspx.cs">
+      <DependentUpon>PaymentSpec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentSpec.aspx.designer.cs">
+      <DependentUpon>PaymentSpec.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -286,16 +295,20 @@
     <Content Include="Content\kendo\kendo.dataviz.min.css" />
     <Content Include="Content\agents.css" />
     <Content Include="Content\Site11.css" />
+    <Content Include="Content\Site12.css" />
     <Content Include="Content\Site23.css" />
     <Content Include="error.htm" />
     <Content Include="Global.asax" />
     <Content Include="images\background11.png" />
     <Content Include="images\background23.png" />
     <Content Include="images\main11.jpg" />
+    <Content Include="images\main12.jpg" />
     <Content Include="images\main23.jpg" />
     <Content Include="images\menu11.png" />
     <Content Include="images\menu23.png" />
+    <Content Include="images\VictorE.jpg" />
     <Content Include="nodrinking.png" />
+    <Content Include="PaymentSpec.aspx" />
     <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

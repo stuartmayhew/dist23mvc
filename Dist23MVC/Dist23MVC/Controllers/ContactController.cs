@@ -23,7 +23,7 @@ namespace Dist23MVC.Controllers
             string nameFrom = fData["userName"].ToString();
             string emailFrom = fData["userEmail"].ToString();
             string destination = fData["contactWho"].ToString();
-            if (!MailHelper.SendEmail(body, nameFrom, emailFrom, destination))
+            if (!MailHelper.SendEmailContact(body, nameFrom, emailFrom, destination))
             {
                 ViewBag.Status = "Sorry, we couldn't send your note. Call the hotline at (251)301-6773 if you need help now!";
             }

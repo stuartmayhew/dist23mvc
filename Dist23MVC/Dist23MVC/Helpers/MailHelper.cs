@@ -20,7 +20,7 @@ namespace Dist23MVC.Helpers
         const String SMTP_PASSWORD = "AqZ2UqLaCgyLYWM+bLngTJlrluc8NH3J5+mwShqwYTKP";  // Replace with your SMTP password.
 
         private static SmtpClient client = new SmtpClient(HOST, PORT);
-        public static bool SendEmail(string textBody, string nameFrom, string emailFrom, string destination,string Type = "")
+        public static bool SendEmailContact(string textBody, string nameFrom, string emailFrom, string destination,string Type = "")
         {
             client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
             client.EnableSsl = true;
@@ -44,27 +44,64 @@ namespace Dist23MVC.Helpers
                 return false;
             }
         }
+        public static bool SendEmailVolunteer(string textBody, string nameFrom, string emailFrom, string destination, string Type = "")
+        {
+            client.Credentials = new System.Net.NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
+            client.EnableSsl = true;
+            string body = nameFrom + " at " + emailFrom + " wrote <br/>";
+            body += textBody;
+            string emailTo = "";
+            emailTo = GetDestinationEmail(destination);
+            MailMessage mail = new MailMessage(fromAddress, emailTo);
+            mail.Subject = "Email from website from " + nameFrom;
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+            try
+            {
+                client.Send(mail);
+                SendConfirm(emailFrom);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string x = ex.Message;
+                return false;
+            }
+        }
+
+
         private static string GetDestinationEmail(string emailTo)
         {
+            string lookupString = "";
             switch (emailTo)
             {
                 case "I need help":
-                    return LookupEmail("Webmaster", true);
+                    lookupString = LookupEmail("Webmaster", true);
+                    break;
                 case "Webmaster":
-                    return LookupEmail("Webmaster", true);
+                    lookupString = LookupEmail("Webmaster", true);
+                    break;
                 case "DCM (District Committee Member, true)":
-                    return LookupEmail("DCM", true);
+                    lookupString = LookupEmail("DCM", true);
+                    break;
                 case "Public Information":
-                    return LookupEmail("Public Information", true);
+                    lookupString = LookupEmail("Public Information", true);
+                    break;
                 case "Treatment Chair":
-                    return LookupEmail("Treatment", true);
+                    lookupString = LookupEmail("Treatment", true);
+                    break;
                 case "Corrections Chair":
                 case "Corrections Committee":
-                    return LookupEmail("Corrections", true);
+                    lookupString = LookupEmail("Corrections", true);
+                    break;
                 case "I am a professional needing information":
-                    return LookupEmail("CPC", true);
+                case "Cooperation With The Professional Community":
+                    lookupString = LookupEmail("CPC", true);
+                    break;
             }
-            return "";
+            if (lookupString == "")
+                lookupString = LookupEmail("Webmaster",true);
+            return lookupString;
         }
 
         private static string LookupEmail(string type,bool isDistrict)

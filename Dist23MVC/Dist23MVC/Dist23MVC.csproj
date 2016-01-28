@@ -196,6 +196,7 @@
     <Compile Include="Controllers\CommLinksController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -203,7 +204,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
-    <Compile Include="Controllers\PhoneListsController.cs" />
+    <Compile Include="Controllers\PaymentSetupsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,8 +220,10 @@
     <Compile Include="Models\ContactsViewModel.cs" />
     <Compile Include="Models\dayorder.cs" />
     <Compile Include="Models\Dist23Data.cs" />
+    <Compile Include="Models\Documents.cs" />
     <Compile Include="Models\Events.cs" />
     <Compile Include="Models\EventViewModel.cs" />
+    <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\Groups.cs" />
     <Compile Include="Models\GroupViewModel.cs" />
     <Compile Include="Models\Links.cs" />
@@ -231,6 +234,10 @@
     <Compile Include="Models\MeetingViewModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NextMeeting.cs" />
+    <Compile Include="Models\Payments.cs" />
+    <Compile Include="Models\PaymentSetup.cs" />
+    <Compile Include="Models\PaymentSetupViewModel.cs" />
+    <Compile Include="Models\PaymentSpecValues.cs" />
     <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
@@ -301,7 +308,6 @@
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
     <None Include="Properties\PublishProfiles\area1.pubxml" />
-    <None Include="Properties\PublishProfiles\easternshoreaa.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -391,6 +397,9 @@
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Locations\MapLocation.cshtml" />
     <Content Include="Views\Links\Calendar.cshtml" />
+    <Content Include="Views\Documents\DocCreate.cshtml" />
+    <Content Include="Views\Documents\DocEdit.cshtml" />
+    <Content Include="Views\Documents\DocIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

@@ -15,5 +15,6 @@ namespace Dist23MVC.Models
         public string CommName { get; set; }
         [DataType(DataType.MultilineText)]
         public string CommHeader { get; set; }
+        public int PositionKey { get; set; }
     }
 }

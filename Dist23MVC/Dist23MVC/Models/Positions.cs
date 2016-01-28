@@ -11,6 +11,7 @@ namespace Dist23MVC.Models
         [Key]
         public int pKey { get; set; }
         public string PositionName { get; set; }
-
+        public string CommitteeTitle { get; set; }
+        public bool isCommittee { get; set; }
     }
 }

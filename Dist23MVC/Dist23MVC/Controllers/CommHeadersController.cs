@@ -38,6 +38,8 @@ namespace Dist23MVC.Controllers
         // GET: CommHeaders/Create
         public ActionResult CommCreate()
         {
+            SelectList PositionList = new SelectList(db.Positions.Where(x => x.isCommittee == true).ToList(), "pKey", "CommitteeTitle", db.Positions);
+            ViewData["PositionList"] = PositionList;
             return View();
         }
 
@@ -46,9 +48,11 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CommCreate([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
+        public ActionResult CommCreate(CommHeaders commHeaders)
         {
             commHeaders.DistKey = GlobalVariables.DistKey;
+            string positionTitle = db.Positions.FirstOrDefault(x => x.pKey == commHeaders.PositionKey).CommitteeTitle;
+            commHeaders.CommName = positionTitle;
             db.CommHeaders.Add(commHeaders);
             db.SaveChanges();
             return RedirectToAction("CommIndex");
@@ -66,6 +70,8 @@ namespace Dist23MVC.Controllers
             {
                 return HttpNotFound();
             }
+            SelectList PositionList = new SelectList(db.Positions.ToList(), "pKey", "CommitteeTitle", db.Positions);
+            ViewData["PositionList"] = PositionList;
             return View(commHeaders);
         }
 
@@ -74,11 +80,13 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CommEdit([Bind(Include = "pKey,DistKey,CommName,CommHeader")] CommHeaders commHeaders)
+        public ActionResult CommEdit(CommHeaders commHeaders)
         {
             if (ModelState.IsValid)
             {
                 commHeaders.DistKey = GlobalVariables.DistKey;
+                //string positionTitle = db.Positions.FirstOrDefault(x => x.pKey == commHeaders.PositionKey).CommitteeTitle;
+                //commHeaders.CommName = positionTitle;
                 db.Entry(commHeaders).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("CommIndex");

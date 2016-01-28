@@ -66,7 +66,7 @@ namespace Dist23MVC.Controllers
             string nameFrom = fData["reqName"].ToString();
             string reqPassword = fData["reqPassword"].ToString();
             string mailBody = "Login request from " + nameFrom + " email:" + emailFrom + " password:" + reqPassword;
-            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, "Webmaster"))
+            if (Helpers.MailHelper.SendEmailContact(mailBody, nameFrom, emailFrom, "Webmaster"))
             {
                 ViewBag.LoginReq = "Request sent. You'll here from us";
             }

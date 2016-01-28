@@ -28,7 +28,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CommLinkCreate([Bind(Include = "pKey,DistKey,CommKey,LinkTitle,LinkHeader,LinkText,LinkURL")] CommLinks commLinks)
+        public ActionResult CommLinkCreate(CommLinks commLinks)
         {
             commLinks.DistKey = GlobalVariables.DistKey;
             if (ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace Dist23MVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(commLinks);
+            return View("CommLinkEdit", commLinks);
         }
 
         // POST: CommLinks/Edit/5
@@ -61,7 +61,7 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CommLinkEdit([Bind(Include = "pKey,DistKey,CommKey,LinkTitle,LinkHeader,LinkText,LinkURL")] CommLinks commLinks)
+        public ActionResult CommLinkEdit(CommLinks commLinks)
         {
             if (ModelState.IsValid)
             {
@@ -70,33 +70,16 @@ namespace Dist23MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("CommLinks","CommHeaders",new { id = commLinks.CommKey });
             }
-            return View(commLinks);
+            return View("CommLinkEdit",commLinks);
         }
 
         // GET: CommLinks/Delete/5
         public ActionResult CommLinkDelete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CommLinks commLinks = db.CommLinks.Find(id);
-            if (commLinks == null)
-            {
-                return HttpNotFound();
-            }
-            return View(commLinks);
-        }
-
-        // POST: CommLinks/Delete/5
-        [HttpPost, ActionName("CommLinkDelete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            CommLinks commLinks = db.CommLinks.Find(id);
+            CommLinks commLinks = db.CommLinks.Find((int)id);
             db.CommLinks.Remove(commLinks);
             db.SaveChanges();
-            return RedirectToAction("CommIndex");
+            return RedirectToAction("CommLinks", "CommHeaders", new { id = commLinks.CommKey });
         }
 
         public ActionResult Volunteer(FormCollection fData)
@@ -108,7 +91,7 @@ namespace Dist23MVC.Controllers
             string commKey = fData[4].ToString();
             
             string mailBody = "Volunteer for " + commTitle + " from " + nameFrom + " email:" + emailFrom + " phone:" + reqPhone;
-            if (Helpers.MailHelper.SendEmail(mailBody, nameFrom, emailFrom, commTitle,"Volunteer"))
+            if (Helpers.MailHelper.SendEmailVolunteer(mailBody, nameFrom, emailFrom, commTitle,"Volunteer"))
             {
                 ViewBag.LoginReq = "Request sent. You'll here from us";
             }

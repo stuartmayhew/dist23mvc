@@ -1,4 +1,4 @@
-﻿@model Dist23MVC.Models.Payments
+﻿@model Dist23MVC.Models.PaymentViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -10,89 +10,95 @@
     <h4>Payments</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.DistKey)
+            @Html.DisplayNameFor(model => model.payment.EventKey)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DistKey)
+            @Html.DisplayFor(model => model.payment.EventKey)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EventKey)
+            @Html.DisplayNameFor(model => model.payment.PaymentType)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EventKey)
+            @Html.DisplayFor(model => model.payment.PaymentType)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PaymentType)
+            @Html.DisplayNameFor(model => model.payment.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PaymentType)
+            @Html.DisplayFor(model => model.payment.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.payment.Address)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.payment.Address)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.payment.Phone)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.payment.Phone)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.payment.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.payment.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.payment.Fellowship)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment.Fellowship)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.payment.Homegroup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment.Homegroup)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Special)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Special)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaypalButton)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaypalButton)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PaypalReturn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaypalReturn)
+            @Html.Raw(Model.PaypalButton)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.pKey }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+@*AKIAJEBXLVB4QIAMGUTQ
+
+    Secret Access Key
+
+    Submit
+    Hide Secret
+    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
+
+    Seller account identifiers for Eastern Shore AA
+    Seller ID:	A34NAOITRH7W43
+    Marketplace ID:	A3BXB0YN3XH17H (Amazon Payments Advanced US Sandbox)
+    AGWSWK15IEJJ7 (Amazon Payments Advanced US Live)
+    A6W85IYQ5WB1C (IBA)
+    Developer account identifier and credentials
+    Developer Account Number:	7092-7921-5368
+    AWS Access Key ID:	AKIAJEBXLVB4QIAMGUTQ
+    Secret Key:	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
+
+*@
+

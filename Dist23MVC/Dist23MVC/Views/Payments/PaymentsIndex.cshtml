@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DistKey)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.EventKey)
         </th>
         <th>
@@ -30,25 +27,17 @@
             @Html.DisplayNameFor(model => model.Phone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Fellowship)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Special)
+            @Html.DisplayNameFor(model => model.Homegroup)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaypalButton)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaypalReturn)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DistKey)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventKey)
         </td>
@@ -68,18 +57,15 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Special)
+            @Html.DisplayFor(modelItem => item.Fellowship)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PaypalButton)
+            @Html.DisplayFor(modelItem => item.Homegroup)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PaypalReturn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pKey }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pKey }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pKey })
+            @Html.ActionLink("Edit", "PaymentsEdit", new { id=item.pKey }) |
+            @Html.ActionLink("Details", "PaymentsDetails", new { id=item.pKey }) |
+            @Html.ActionLink("Delete", "PaymentsDelete", new { id=item.pKey })
         </td>
     </tr>
 }

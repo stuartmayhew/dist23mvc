@@ -7,13 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "PaymentSetupsCreate")
+    @Html.ActionLink("Create New", "PaymentSetupsCreate", new { id = ViewContext.RouteData.Values["id"] })
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DistKey)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.EventKey)
         </th>
@@ -31,9 +28,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DistKey)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventKey)
         </td>

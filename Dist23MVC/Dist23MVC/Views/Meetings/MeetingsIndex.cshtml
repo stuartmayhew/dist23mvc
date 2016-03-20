@@ -30,12 +30,6 @@
             columns.Bound(p => p.city).HeaderTemplate("<label for='city'>City</label>");
             columns.Bound(p => p.locationID).ClientTemplate("<a href='../Locations/ShowLocation/#=locationID#' target='_blank'>View Map</a>").HeaderTemplate("<label for='gender'>Maps</label>");
         })
-               .ToolBar(tools => tools.Excel())
-                 .Excel(excel => excel
-                     .FileName("Members.xlsx")
-                     .Filterable(true)
-                     .AllPages(true)
-                 )
                  .ToolBar(tools => tools.Pdf())
                    .Pdf(pdf => pdf
                    .AllPages()

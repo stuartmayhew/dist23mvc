@@ -9,8 +9,9 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.DistKey)
     @Html.HiddenFor(model => model.EventKey)
+    @Html.HiddenFor(model => model.Amount)
+
 
 
     <div class="form-horizontal">
@@ -49,31 +50,46 @@
             </div>
         </div>
 
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "AA",
+        Value = "AA"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Alanon",
+        Value = "Alanon"
+    });
+}
+
         <div class="form-group">
-            @Html.LabelFor(model => model.paymentSetup.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Fellowship, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.paymentSetup.Amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.paymentSetup.Amount, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.Fellowship, listItems)
+                @Html.ValidationMessageFor(model => model.Fellowship, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @if (Model.paymentSetup.hasSpecial)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Homegroup, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Homegroup, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Homegroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*@if (Model.paymentSetup.hasSpecial)
         {
-            @*<div class="form-group">
+            <div class="form-group">
                 @Html.Label("Choose an option:")
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.paymentSetup.Amount, (IEnumerable<SelectListItem>)ViewData["SpecList"], new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.paymentSetup.Amount, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
-        }
-        <div class="form-group">
-            @Html.LabelFor(model => model.PaypalButton, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.Raw((string)Model.PaypalButton)
-                @Html.ValidationMessageFor(model => model.PaypalButton, "", new { @class = "text-danger" })
             </div>
-        </div>
+        }*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

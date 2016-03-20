@@ -49,6 +49,10 @@
 <hr class="seperatorLine" />
 <div class="col-md-10 col-lg-offset-2">
     <h4>Volunteer to help out on the @ViewBag.CommTitle below</h4>
+    @if (Session["LoginReq"] != null)
+    {
+        @Html.Label(Session["LoginReq"].ToString());
+    }
     @using (Html.BeginForm("Volunteer", "CommLinks"))
     {
         @Html.AntiForgeryToken()
@@ -76,10 +80,6 @@
                 </div>
             </div>
             <div class="col-md-12">
-                @if (ViewBag.LoginReq != null)
-                {
-                    @Html.Label("@ViewBag.LoginReq");
-                }
                 <input type="hidden" name="CommKey" id="CommKey" value="@ViewBag.CommKey" />
                 <input type="hidden" name="commTitle "id="commTitle" value="@ViewBag.CommTitle"/>
             </div>

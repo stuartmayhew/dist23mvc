@@ -39,6 +39,7 @@ namespace Dist23MVC.Models
         public DbSet<Positions> Positions { get; set; }
         public DbSet<ContactPosition> ContactPosition { get; set; }
         public DbSet<SiteConfig> SiteConfig { get; set; }
+        public DbSet<Payments> Payments { get; set;}
         public DbSet<PaymentSetup> PaymentSetup { get; set; }
         public DbSet<PaymentSpecValues> PaymentSpecValues { get; set; }
         public DbSet<Groups> Groups { get; set; }

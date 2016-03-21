@@ -189,6 +189,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllServants.aspx.cs">
+      <DependentUpon>AllServants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AllServants.aspx.designer.cs">
+      <DependentUpon>AllServants.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -204,6 +211,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\PaymentSetupsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -249,6 +257,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AllServants.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\kendo\Bootstrap\editor.png" />
@@ -400,6 +409,15 @@
     <Content Include="Views\Documents\DocCreate.cshtml" />
     <Content Include="Views\Documents\DocEdit.cshtml" />
     <Content Include="Views\Documents\DocIndex.cshtml" />
+    <Content Include="Views\Payments\PaymentsCreate.cshtml" />
+    <Content Include="Views\Payments\PaymentsDelete.cshtml" />
+    <Content Include="Views\Payments\PaymentsDetails.cshtml" />
+    <Content Include="Views\Payments\PaymentsIndex.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsCreate.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsDelete.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsDetails.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsEdit.cshtml" />
+    <Content Include="Views\PaymentSetups\PaymentSetupsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

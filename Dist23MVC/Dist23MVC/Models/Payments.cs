@@ -10,7 +10,6 @@ namespace Dist23MVC.Models
     {
         [Key]
         public int pKey { get; set; }
-        public int DistKey { get; set; }
         public int EventKey { get; set; }
         public string PaymentType { get; set; }
         public string Name { get; set; }
@@ -18,10 +17,8 @@ namespace Dist23MVC.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Special { get; set; }
-        public string PaypalButton { get; set; }
-        public string PaypalReturn { get; set; }
         public DateTime PaymentDate { get; set; }
-        public PaymentSetup paymentSetup { get; set; }
-        public List<PaymentSpecValues> paymentSpecValues {get;set;}
+        //public PaymentSetup paymentSetup { get; set; }
+        //public List<PaymentSpecValues> paymentSpecValues {get;set;}
     }
 }

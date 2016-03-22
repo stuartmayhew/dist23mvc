@@ -429,6 +429,7 @@
     <Content Include="Views\Payments\PaymentsDetails.cshtml" />
     <Content Include="Views\Payments\PaymentsIndex.cshtml" />
     <Content Include="Views\Payments\PaymentsEdit.cshtml" />
+    <Content Include="Views\Shared\_LayoutMeeings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

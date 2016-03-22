@@ -246,9 +246,17 @@
     <Compile Include="Models\PaymentSetup.cs" />
     <Compile Include="Models\PaymentSetupViewModel.cs" />
     <Compile Include="Models\PaymentSpecValues.cs" />
+    <Compile Include="Models\PaymentViewModel.cs" />
     <Compile Include="Models\Positions.cs" />
     <Compile Include="Models\SiteConfig.cs" />
     <Compile Include="Models\VolunteerList.cs" />
+    <Compile Include="PaymentSpec.aspx.cs">
+      <DependentUpon>PaymentSpec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentSpec.aspx.designer.cs">
+      <DependentUpon>PaymentSpec.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -295,10 +303,13 @@
     <Content Include="images\background11.png" />
     <Content Include="images\background23.png" />
     <Content Include="images\main11.jpg" />
+    <Content Include="images\main12.jpg" />
     <Content Include="images\main23.jpg" />
     <Content Include="images\menu11.png" />
     <Content Include="images\menu23.png" />
+    <Content Include="images\VictorE.jpg" />
     <Content Include="nodrinking.png" />
+    <Content Include="PaymentSpec.aspx" />
     <Content Include="Scripts\additional-methods.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -317,7 +328,6 @@
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
     <None Include="Properties\PublishProfiles\area1.pubxml" />
-    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -409,15 +419,16 @@
     <Content Include="Views\Documents\DocCreate.cshtml" />
     <Content Include="Views\Documents\DocEdit.cshtml" />
     <Content Include="Views\Documents\DocIndex.cshtml" />
-    <Content Include="Views\Payments\PaymentsCreate.cshtml" />
-    <Content Include="Views\Payments\PaymentsDelete.cshtml" />
-    <Content Include="Views\Payments\PaymentsDetails.cshtml" />
-    <Content Include="Views\Payments\PaymentsIndex.cshtml" />
     <Content Include="Views\PaymentSetups\PaymentSetupsCreate.cshtml" />
     <Content Include="Views\PaymentSetups\PaymentSetupsDelete.cshtml" />
     <Content Include="Views\PaymentSetups\PaymentSetupsDetails.cshtml" />
     <Content Include="Views\PaymentSetups\PaymentSetupsEdit.cshtml" />
     <Content Include="Views\PaymentSetups\PaymentSetupsIndex.cshtml" />
+    <Content Include="Views\Payments\PaymentsCreate.cshtml" />
+    <Content Include="Views\Payments\PaymentsDelete.cshtml" />
+    <Content Include="Views\Payments\PaymentsDetails.cshtml" />
+    <Content Include="Views\Payments\PaymentsIndex.cshtml" />
+    <Content Include="Views\Payments\PaymentsEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

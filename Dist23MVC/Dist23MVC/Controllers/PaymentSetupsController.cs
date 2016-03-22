@@ -15,9 +15,9 @@ namespace Dist23MVC.Controllers
         private Dist23Data db = new Dist23Data();
 
         // GET: PaymentSetups
-        public ActionResult PaymentSetupsIndex()
+        public ActionResult PaymentSetupsIndex(int id)
         {
-            return View(db.PaymentSetup.ToList());
+            return View(db.PaymentSetup.Where(x => x.EventKey == id).ToList());
         }
 
         // GET: PaymentSetups/Details/5
@@ -40,7 +40,6 @@ namespace Dist23MVC.Controllers
         {
             PaymentSetup ps = new PaymentSetup();
             ps.EventKey = id;
-            ps.DistKey = (int)Session["DistKey"];
             return View(ps);
         }
 
@@ -49,14 +48,14 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PaymentSetupsCreate([Bind(Include = "pKey,DistKey,EventKey,Amount,hasSpecial,ButtonLink")] PaymentSetup paymentSetup)
+        public ActionResult PaymentSetupsCreate(PaymentSetup paymentSetup)
         {
             if (ModelState.IsValid)
             {
                 db.PaymentSetup.Add(paymentSetup);
                 db.SaveChanges();
                 Session["currSetupKey"] = paymentSetup.pKey;
-                return RedirectToAction("PaymentSetupsIndex");
+                return RedirectToAction("PaymentSetupsIndex",new { id = paymentSetup.EventKey });
             }
 
             return View(paymentSetup);

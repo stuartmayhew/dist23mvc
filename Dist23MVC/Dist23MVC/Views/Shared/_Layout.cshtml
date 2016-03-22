@@ -7,10 +7,6 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/kendo/css")
 
-    @Scripts.Render("~/Scripts/modernizr")
-    @Scripts.Render("~/Scripts/jquery")
-    @Scripts.Render("~/Scripts/UIscripts")
-    @Scripts.Render("~/Scripts/kendo/js")
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -71,6 +67,10 @@
         @RenderBody()
     </div>
 
+    @Scripts.Render("~/Scripts/modernizr")
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/UIscripts")
+    @Scripts.Render("~/Scripts/kendo/js")
     @RenderSection("scripts", false)
     @Scripts.Render("~/Scripts/site")
     @RenderSection("inlineScripts", false)

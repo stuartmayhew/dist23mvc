@@ -11,14 +11,15 @@ namespace Dist23MVC.Models
         [Key]
         public int pKey { get; set; }
         public int EventKey { get; set; }
+        public decimal? Amount { get; set; }
         public string PaymentType { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public string Special { get; set; }
+        public string Fellowship { get; set; }
+        public string Homegroup { get; set; }
         public DateTime PaymentDate { get; set; }
-        //public PaymentSetup paymentSetup { get; set; }
-        //public List<PaymentSpecValues> paymentSpecValues {get;set;}
+        public bool isPaid { get; set; }
     }
 }

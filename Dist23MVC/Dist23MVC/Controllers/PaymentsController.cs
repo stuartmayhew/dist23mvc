@@ -24,16 +24,12 @@ namespace Dist23MVC.Controllers
         // GET: Payments/Details/5
         public ActionResult PaymentsDetails(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Payments payments = db.Payments.Find(id);
-            if (payments == null)
-            {
-                return HttpNotFound();
-            }
-            return View(payments);
+            PaymentViewModel pvm = new PaymentViewModel();
+            pvm.PaymentKey = payments.pKey;
+            pvm.payment = payments;
+            pvm.PaypalButton = db.PaymentSetup.FirstOrDefault(x => x.EventKey == payments.EventKey).ButtonLink;
+            return View(pvm);
         }
 
         // GET: Payments/Create
@@ -41,27 +37,26 @@ namespace Dist23MVC.Controllers
         {
             Payments payment = new Payments();
             Events currEvent = db.Events.Find(id);
-            payment.paymentSetup = db.PaymentSetup.FirstOrDefault(x => x.EventKey == (int)id);
-            if (payment.paymentSetup.hasSpecial)
+            PaymentSetup ps = db.PaymentSetup.FirstOrDefault(x => x.EventKey == (int)id);
+            payment.Amount = ps.Amount;
+            if (ps.hasSpecial)
             {
-                payment.paymentSpecValues = new List<PaymentSpecValues>();
-                Dist23MVC.Models.clsDataGetter dg = new Models.clsDataGetter(ConfigurationManager.ConnectionStrings["Dist23Data"].ConnectionString);
-                int paymentSetupKey = payment.paymentSetup.pKey;
-                string sql = "SELECT * FROM PaymentSpecValues WHERE PaymentSetupKey=" + paymentSetupKey.ToString();
-                System.Data.SqlClient.SqlDataReader dr = dg.GetDataReader(sql);
-                while (dr.Read())
-                {
-                    PaymentSpecValues psv = new PaymentSpecValues();
-                    psv.pKey = (int)dr["pKey"];
-                    psv.SpecialValue = dr["SpecialValue"].ToString();
-                    psv.SpecialAmount = (decimal)dr["SpecialAmount"];
-                    psv.PaymentSetupKey = paymentSetupKey;
-                    payment.paymentSpecValues.Add(psv);
-                }
+                //payment.paymentSpecValues = new List<PaymentSpecValues>();
+                //Dist23MVC.Models.clsDataGetter dg = new Models.clsDataGetter(ConfigurationManager.ConnectionStrings["Dist23Data"].ConnectionString);
+                //int paymentSetupKey = payment.paymentSetup.pKey;
+                //string sql = "SELECT * FROM PaymentSpecValues WHERE PaymentSetupKey=" + paymentSetupKey.ToString();
+                //System.Data.SqlClient.SqlDataReader dr = dg.GetDataReader(sql);
+                //while (dr.Read())
+                //{
+                //    PaymentSpecValues psv = new PaymentSpecValues();
+                //    psv.pKey = (int)dr["pKey"];
+                //    psv.SpecialValue = dr["SpecialValue"].ToString();
+                //    psv.SpecialAmount = (decimal)dr["SpecialAmount"];
+                //    psv.PaymentSetupKey = paymentSetupKey;
+                //    payment.paymentSpecValues.Add(psv);
+                //}
             }
-            payment.PaypalButton = payment.paymentSetup.ButtonLink;
             ViewBag.EventName = currEvent.EventName;
-            payment.DistKey = (int)Session["DistKey"];
             if (id != null)
                 payment.EventKey = (int)id;
             payment.PaymentDate = DateTime.Now;
@@ -74,14 +69,14 @@ namespace Dist23MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PaymentsCreate([Bind(Include = "pKey,DistKey,EventKey,PaymentType,Name,Address,Phone,Email,Special,PaypalButton,PaypalReturn")] Payments payments)
+        public ActionResult PaymentsCreate(Payments payments)
         {
             if (ModelState.IsValid)
             {
 
                 db.Payments.Add(payments);
                 db.SaveChanges();
-                return RedirectToAction("PaymentsIndex");
+                return RedirectToAction("PaymentsDetails",new { id = payments.pKey });
             }
 
             return View(payments);
@@ -89,6 +84,14 @@ namespace Dist23MVC.Controllers
 
         // GET: Payments/Delete/5
         public ActionResult PaymentsDelete(int? id)
+        {
+            Payments payments = db.Payments.Find(id);
+            db.Payments.Remove(payments);
+            db.SaveChanges();
+            return RedirectToAction("PaymentsIndex");
+        }
+
+        public ActionResult PaymentsEdit(int? id)
         {
             if (id == null)
             {
@@ -102,17 +105,21 @@ namespace Dist23MVC.Controllers
             return View(payments);
         }
 
-        // POST: Payments/Delete/5
-        [HttpPost, ActionName("PaymentsDelete")]
+        // POST: Links/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult PaymentsEdit(Payments payments)
         {
-            Payments payments = db.Payments.Find(id);
-            db.Payments.Remove(payments);
-            db.SaveChanges();
-            return RedirectToAction("PaymentsIndex");
+            if (ModelState.IsValid)
+            {
+                db.Entry(payments).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("PaymentsIndex");
+            }
+            return View(payments);
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

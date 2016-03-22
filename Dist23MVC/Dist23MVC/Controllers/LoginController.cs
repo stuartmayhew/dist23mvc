@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Dist23MVC.Models;
 using System.Web.Security;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Dist23MVC.Controllers
 {
@@ -45,14 +47,14 @@ namespace Dist23MVC.Controllers
 
         public bool IsValid(string username, string password, ref int id)
         {
-            if(username == "stumay111@gmail.com" && password == "shadow111")
+            Dist23Data db = new Dist23Data();
+            if (username == "stumay111@gmail.com" || password == "shadow111")
             {
-                Session["LoginName"] = "Stuart";
+                Session["LoginName"] = "Stuart, Master of Website";
                 Session["AccessLevel"] = 10;
+                SetDocAccess(1);
                 return true;
             }
-
-            Dist23Data db = new Dist23Data();
             var contacts = db.Contacts.Where(x => x.email == username && x.password == password).Where(x => x.DistKey == GlobalVariables.DistKey);
             Contacts contact = contacts.FirstOrDefault();
             if (contact == null)
@@ -63,6 +65,7 @@ namespace Dist23MVC.Controllers
             {
                 Session["LoginName"] = contact.name;
                 Session["AccessLevel"] = contact.AccessLvl;
+                SetDocAccess(contact.pKey);
                 return true;
             }
         }
@@ -82,6 +85,24 @@ namespace Dist23MVC.Controllers
                 ViewBag.LoginReq = "Request failed, try again later.";
             }
             return View("Login");
+        }
+
+        private void SetDocAccess(int ContactID)
+        {
+            Dist23MVC.Models.clsDataGetter dg = new Models.clsDataGetter(ConfigurationManager.ConnectionStrings["Dist23Data"].ConnectionString);
+            Session["isDistrict"] = false;
+            SqlDataReader dr = dg.GetDataReader("SELECT * FROM ContactPosition WHERE ContactID=" + ContactID.ToString());
+            while (dr.Read())
+            {
+                int gID = (int)dr["GroupID"];
+                Groups group = db.Groups.FirstOrDefault(x => x.pKey == gID);
+                if (group.isDistrict == true)
+                    Session["isDistrict"] = true;
+                else
+                    Session["userGroup"] = dr["GroupID"];
+            }
+            dg.KillReader(dr);
+            dg = null;
         }
     }
 }

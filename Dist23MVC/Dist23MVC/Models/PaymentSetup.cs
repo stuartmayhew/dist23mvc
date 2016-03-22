@@ -10,7 +10,6 @@ namespace Dist23MVC.Models
     {
         [Key]
         public int pKey { get; set; }
-        public int DistKey { get; set; }
         public int EventKey { get; set; }
         public Decimal? Amount { get; set; }
         public bool hasSpecial { get; set; }

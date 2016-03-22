@@ -93,13 +93,27 @@ namespace Dist23MVC.Controllers
             string mailBody = "Volunteer for " + commTitle + " from " + nameFrom + " email:" + emailFrom + " phone:" + reqPhone;
             if (Helpers.MailHelper.SendEmailVolunteer(mailBody, nameFrom, emailFrom, commTitle,"Volunteer"))
             {
-                ViewBag.LoginReq = "Request sent. You'll here from us";
+                Session["LoginReq"] = "Thanks you for your service, you'll hear from us";
+                AddVolunteer(emailFrom, nameFrom, reqPhone, commKey);
             }
             else
             {
-                ViewBag.LoginReq = "Request failed, try again later.";
+                Session["LoginReq"] = "Request failed, try again later.";
             }
             return RedirectToAction("CommLinks", "CommHeaders",new { id = Int32.Parse(commKey) });
+        }
+
+        private void AddVolunteer(string name, string email,string phone,string commKey)
+        {
+            VolunteerList vol = new VolunteerList();
+            vol.DistKey = (int)Session["DistKey"];
+            vol.CommKey = Int32.Parse(commKey);
+            vol.Name = name;
+            vol.Email = email;
+            vol.Phone = phone;
+            vol.VolDate = DateTime.Now;
+            db.VolunteerList.Add(vol);
+            db.SaveChanges();
         }
         protected override void Dispose(bool disposing)
         {

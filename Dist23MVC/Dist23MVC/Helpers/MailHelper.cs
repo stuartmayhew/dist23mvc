@@ -27,7 +27,7 @@ namespace Dist23MVC.Helpers
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
             string emailTo = "";
-                emailTo = GetDestinationEmail(destination);
+                emailTo = GetContactDestinationEmail(destination);
             MailMessage mail = new MailMessage(fromAddress, emailTo);
             mail.Subject = "Email from website from " + nameFrom;
             mail.IsBodyHtml = true;
@@ -51,7 +51,7 @@ namespace Dist23MVC.Helpers
             string body = nameFrom + " at " + emailFrom + " wrote <br/>";
             body += textBody;
             string emailTo = "";
-            emailTo = GetDestinationEmail(destination);
+            emailTo = GetVolunteerDestinationEmail(destination);
             MailMessage mail = new MailMessage(fromAddress, emailTo);
             mail.Subject = "Email from website from " + nameFrom;
             mail.IsBodyHtml = true;
@@ -70,7 +70,7 @@ namespace Dist23MVC.Helpers
         }
 
 
-        private static string GetDestinationEmail(string emailTo)
+        private static string GetContactDestinationEmail(string emailTo)
         {
             string lookupString = "";
             switch (emailTo)
@@ -101,6 +101,40 @@ namespace Dist23MVC.Helpers
             }
             if (lookupString == "")
                 lookupString = LookupEmail("Webmaster",true);
+            return lookupString;
+        }
+
+        private static string GetVolunteerDestinationEmail(string emailTo)
+        {
+            string lookupString = "";
+            switch (emailTo)
+            {
+                case "I need help":
+                    lookupString = LookupEmail("Webmaster", true);
+                    break;
+                case "Webmaster":
+                    lookupString = LookupEmail("Webmaster", true);
+                    break;
+                case "DCM (District Committee Member, true)":
+                    lookupString = LookupEmail("DCM", true);
+                    break;
+                case "Public Information":
+                    lookupString = LookupEmail("Public Information", true);
+                    break;
+                case "Treatment Chair":
+                    lookupString = LookupEmail("Treatment", true);
+                    break;
+                case "Corrections Chair":
+                case "Corrections Committee":
+                    lookupString = LookupEmail("Corrections", true);
+                    break;
+                case "I am a professional needing information":
+                case "Cooperation With The Professional Community":
+                    lookupString = LookupEmail("CPC", true);
+                    break;
+            }
+            if (lookupString == "")
+                lookupString = LookupEmail("Webmaster", true);
             return lookupString;
         }
 

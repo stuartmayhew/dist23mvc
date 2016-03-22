@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.EventKey)
+            @Html.DisplayNameFor(model => model.isPaid)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PaymentType)
@@ -39,7 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EventKey)
+            @Html.DisplayFor(modelItem => item.isPaid)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PaymentType)

@@ -63,13 +63,14 @@ namespace Dist23MVC.Controllers
             }
             List<MeetingViewModel> meetingList = new List<MeetingViewModel>();
 
-            var mtgList = db.Meetings.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+            var mtgList = db.Meetings.Where(x => x.DistKey == GlobalVariables.DistKey).OrderBy(x => x.GroupId).ThenBy(x => x.Day).ToList();
             foreach (Meetings meeting in mtgList)
             {
                 MeetingViewModel mvm = new MeetingViewModel();
                 mvm.pKey = meeting.pKey;
                 mvm.meeting = db.Meetings.Where(x => x.pKey == meeting.pKey).FirstOrDefault();
-                mvm.Location = db.Locations.FirstOrDefault(x => x.pKey == meeting.LocationID).Location;
+                if(meeting.LocationID != 0)
+                    mvm.Location = db.Locations.FirstOrDefault(x => x.pKey == meeting.LocationID).Location;
                 mvm.GroupName = db.Groups.FirstOrDefault(x => x.pKey == meeting.GroupId).GroupName;
                 meetingList.Add(mvm);
             }

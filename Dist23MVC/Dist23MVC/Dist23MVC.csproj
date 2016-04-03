@@ -263,6 +263,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="updateBanner.aspx.cs">
+      <DependentUpon>updateBanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="updateBanner.aspx.designer.cs">
+      <DependentUpon>updateBanner.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AllServants.aspx" />
@@ -298,13 +305,17 @@
     <Content Include="Content\kendo\kendo.dataviz.min.css" />
     <Content Include="Content\agents.css" />
     <Content Include="Content\Site11.css" />
+    <Content Include="Content\Site12.css" />
     <Content Include="Content\Site23.css" />
+    <Content Include="Content\Site4.css" />
     <Content Include="Global.asax" />
     <Content Include="images\background11.png" />
     <Content Include="images\background23.png" />
     <Content Include="images\main11.jpg" />
     <Content Include="images\main12.jpg" />
     <Content Include="images\main23.jpg" />
+    <Content Include="images\main4.jpg" />
+    <Content Include="images\main4.png" />
     <Content Include="images\menu11.png" />
     <Content Include="images\menu23.png" />
     <Content Include="images\VictorE.jpg" />
@@ -355,6 +366,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="updateBanner.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

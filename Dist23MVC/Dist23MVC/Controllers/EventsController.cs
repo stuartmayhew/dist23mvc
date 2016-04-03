@@ -50,8 +50,9 @@ namespace Dist23MVC.Controllers
         {
             if (!Helpers.LoginHelpers.isLoggedIn())
                 return RedirectToAction("Login", "Login");
-            SelectList EventCatList = new SelectList(db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList(), "pKey", "EventCatName", db.EventCat);
-            ViewData["EventCatList"] = EventCatList;
+            //SelectList EventCatList = new SelectList(db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList(), "pKey", "EventCatName", db.EventCat);
+            //ViewData["EventCatList"] = EventCatList;
+            BuildEventCatList();
             return View();
         }
 
@@ -189,13 +190,13 @@ namespace Dist23MVC.Controllers
 
         private void BuildEventCatList()
         {
-
-            var catList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).Select(x => new SelectListItem
-            {
-                Value = x.pKey.ToString(),
-                Text = x.EventCatName,
-            });
-            ViewBag.EventCatList = catList;
+            var catList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+            //.Select(x => new SelectListItem
+            //{
+            //    Value = x.pKey.ToString(),
+            //    Text = x.EventCatName,
+            //});
+            ViewData["EventCatList"] = new SelectList(catList,"pKey","EventCatName");
         }
 
         private string BuildEventFileName(string ext, int id = -1)

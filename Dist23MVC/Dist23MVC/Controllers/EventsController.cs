@@ -63,22 +63,16 @@ namespace Dist23MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EventsCreate(Events events)
         {
-            if (ModelState.IsValid)
+            if (Session["currFile"] != null)
             {
-                if (Session["currFile"] != null)
-                {
-                    events.Eventlink = Session["currFile"].ToString();
-                }
-                events.DistKey = GlobalVariables.DistKey;
-                db.Events.Add(events);
-                db.SaveChanges();
-                Session["currEventKey"] = events.pKey;
-                return RedirectToAction("EventsEdit/" + Session["currEventKey"].ToString());
+                events.Eventlink = Session["currFile"].ToString();
             }
-
-            return View(events);
+            events.DistKey = GlobalVariables.DistKey;
+            db.Events.Add(events);
+            db.SaveChanges();
+            Session["currEventKey"] = events.pKey;
+            return RedirectToAction("EventsEdit/" + Session["currEventKey"].ToString());
         }
-
         // GET: Events/Edit/5
         public ActionResult EventsEdit(int? id)
         {
@@ -217,6 +211,8 @@ namespace Dist23MVC.Controllers
 
         private void DeleteFlyer(string path)
         {
+            if (path.Length == 0)
+                return;
             if (path.Contains("http"))
                 return;
             path = path.Replace("..", "~");

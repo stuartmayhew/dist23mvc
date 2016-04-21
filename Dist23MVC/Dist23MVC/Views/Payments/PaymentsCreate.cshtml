@@ -34,6 +34,28 @@
             </div>
         </div>
 
+        @{
+            List<SelectListItem> TypeList = new List<SelectListItem>();
+            TypeList.Add(new SelectListItem
+            {
+                Text = "Scholarship Needed",
+                Value = "Scholarship Needed"
+            });
+
+            TypeList.Add(new SelectListItem
+            {
+                Text = "Scholarship Payment",
+                Value = "Scholarship Payment",
+            });
+        }
+        <div class="form-group">
+            @Html.Label("Scholarship", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.PaymentType, TypeList, htmlAttributes: new { @class = "control-label col-md-4" })
+                @Html.ValidationMessageFor(model => model.PaymentType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

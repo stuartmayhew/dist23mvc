@@ -48,9 +48,10 @@
                 </td>
             </tr>
         </table>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" />
         <br />
     <div>
+    
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update Banner" />
     
     </div>
     </form>

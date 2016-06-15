@@ -18,21 +18,23 @@ namespace Dist23MVC
         SqlDataReader dr;
         protected void Page_Load(object sender, EventArgs e)
         {
-            dr = dg.GetDataReader("SELECT TOP(1) * FROM SiteConfig WHERE DistKey=" + Session["DistKey"].ToString());
-            if (dr.Read())
+            if (!IsPostBack)
             {
-                tbBannerTitle.Text = dr["BannerTitle"].ToString();
-                tbBannerSubTitle.Text = dr["BannerSubTitle"].ToString();
-                tbHotlinePh.Text = dr["HotlinePh"].ToString();
-                tbAltHotline.Text = dr["AltHotline"].ToString();
-                tbAltHotlineMsg.Text = dr["AltHotlineMsg"].ToString();
+                dr = dg.GetDataReader("SELECT TOP(1) * FROM SiteConfig WHERE DistKey=" + Session["DistKey"].ToString());
+                if (dr.Read())
+                {
+                    tbBannerTitle.Text = dr["BannerTitle"].ToString();
+                    tbBannerSubTitle.Text = dr["BannerSubTitle"].ToString();
+                    tbHotlinePh.Text = dr["HotlinePh"].ToString();
+                    tbAltHotline.Text = dr["AltHotline"].ToString();
+                    tbAltHotlineMsg.Text = dr["AltHotlineMsg"].ToString();
+                }
             }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string sql = "UPDATE SiteConfig SET ";
-            sql += "BannerTitle='" + tbBannerTitle.Text + "',";
+            string sql = "UPDATE SiteConfig SET BannerTitle='" + tbBannerTitle.Text + "',";
             sql += "BannerSubTitle='" + tbBannerSubTitle.Text + "',";
             sql += "HotlinePh='" + tbHotlinePh.Text + "',";
             sql += "AltHotline='" + tbAltHotline.Text + "',";
@@ -42,3 +44,4 @@ namespace Dist23MVC
         }
     }
 }
+

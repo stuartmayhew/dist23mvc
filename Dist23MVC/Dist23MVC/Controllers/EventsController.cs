@@ -118,30 +118,21 @@ namespace Dist23MVC.Controllers
         // GET: Events/Delete/5
         public ActionResult EventsDelete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Events events = db.Events.Find(id);
-            if (events == null)
-            {
-                return HttpNotFound();
-            }
-            return View(events);
-        }
-
-        // POST: Events/Delete/5
-        [HttpPost, ActionName("EventsDelete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
             Events events = db.Events.Find(id);
             db.Events.Remove(events);
             db.SaveChanges();
-            DeleteFlyer(events.Eventlink);
+            try
+            {
+                DeleteFlyer(events.Eventlink);
+            }
+            catch
+            {
+
+            }
             return RedirectToAction("EventsIndex");
         }
 
+        // POST: Events/Delete/5
         [HttpPost]
         public ActionResult UploadEdit(int id)
         {

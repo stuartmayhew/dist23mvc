@@ -60,7 +60,7 @@
         ... then the @Html.DisplayFor(model => model.aaGroup) group in @Html.DisplayFor(model => model.city) has <br />
         a meeting at the @Html.DisplayFor(model => model.location) at @Html.DisplayFor(model => model.Time)<br />
         There's a map below, and if you need a to talk to someone about your problem,<br />
-        call us at (251)301-6773.<br /><br />
+        call us at @Session["Hotline"].ToString()<br /><br />
     </div>
     <div id="map_canvas" style="height: 600px;width:600px;"></div>
 

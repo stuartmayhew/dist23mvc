@@ -92,7 +92,7 @@ font-weight:bold;
 .newsItem
 {
 height:auto;
-background-color:#FCFBEF;
+background-color:white;
 font-size:inherit;
 font-family:Arial Black;
 font-weight:bold;
@@ -101,7 +101,7 @@ font-weight:bold;
 .seperatorLine
 {
     font-weight: bold;
-    background-color:darkgoldenrod;
+    background-color:darkblue;
     height: 5px;
 }
 

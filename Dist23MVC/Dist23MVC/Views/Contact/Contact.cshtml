@@ -4,7 +4,7 @@
 
 <h2>Contact Us</h2>
 <div class="col-sm-10">
-    @using (Html.BeginForm("SendMail","Contact"))
+    @using (Html.BeginForm("SendMail", "Contact"))
     {
         <table>
             <tr>
@@ -41,7 +41,24 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input id="submit" type="submit" value="Send Mail" /></td>
+                <td><img src="~/images/IMG_0664.jpg" height="90px" width="110px" />This is a picture of</td>
+            <tr>
+                <td></td>
+                <td>
+                    <select id="botReject" name="botReject">
+                        <option value="Cat">Cat</option>
+                        <option value="Chicken">Chicken</option>
+                        <option value="Horse">Horse</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Racoon">Racoon</option>
+                        <option value="Cow">Cow</option>
+                    </select>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="submit" type="submit" value="Send Mail" disabled /></td>
             </tr>
             @if (ViewBag.Status == "Mail successfully sent.")
             {
@@ -61,4 +78,15 @@
         </table>
     }
 </div>
-    
+@Scripts.Render("~/Scripts/jquery")
+
+
+<script>
+    $(document).ready(function () {
+        $('#botReject').on('change', function () {
+            if ($(this).val() == 'Dog') {
+                $('#submit').prop('disabled', false);
+            }
+        });
+    });
+</script>

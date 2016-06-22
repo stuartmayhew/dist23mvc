@@ -175,7 +175,7 @@ namespace Dist23MVC.Controllers
 
         private void BuildEventCatList()
         {
-            var catList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey).ToList();
+            var catList = db.EventCat.Where(x => x.DistKey == GlobalVariables.DistKey || x.DistKey == 999).ToList();
             //.Select(x => new SelectListItem
             //{
             //    Value = x.pKey.ToString(),

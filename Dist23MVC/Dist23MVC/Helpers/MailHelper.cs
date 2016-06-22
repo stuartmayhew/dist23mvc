@@ -34,9 +34,10 @@ namespace Dist23MVC.Helpers
             mail.Body = body;
             try
             {
-                client.Send(mail);
-                SendConfirm(emailFrom);
-                return true;
+                //client.Send(mail);
+                //SendConfirm(emailFrom);
+                //return true;
+                return false;
             }
             catch (Exception ex)
             {

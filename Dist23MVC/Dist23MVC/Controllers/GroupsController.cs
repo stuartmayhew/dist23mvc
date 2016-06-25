@@ -70,6 +70,7 @@ namespace Dist23MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                groups.DistKey = GlobalVariables.DistKey;
                 db.Groups.Add(groups);
                 db.SaveChanges();
                 return RedirectToAction("GroupsIndex");

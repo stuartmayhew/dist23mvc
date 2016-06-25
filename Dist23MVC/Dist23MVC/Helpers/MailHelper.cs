@@ -140,23 +140,18 @@ namespace Dist23MVC.Helpers
 
         private static string LookupEmail(string type,bool isDistrict)
         {
-            
-            using (Dist23Data db = new Dist23Data())
-            {
-                IQueryable<Contacts> emailAddVar =
-                    from contact in db.Contacts
-                    join contactPosition in db.ContactPosition on contact.pKey equals contactPosition.ContactID
-                    join positions in db.Positions on contactPosition.PositionID equals positions.pKey
-                    join groups in db.Groups on contactPosition.DistKey equals groups.DistKey
-                    where positions.PositionName == type
-                    where contact.DistKey == GlobalVariables.DistKey
-                    where groups.isDistrict == true
-                    select contact;
-                return emailAddVar.FirstOrDefault().email;
-                   
-                
-
-            }
+            Dist23Data db = new Dist23Data();
+            clsDataGetter dg = new clsDataGetter(db.Database.Connection.ConnectionString);
+            string sql = "SELECT email FROM contacts c ";
+            sql += "INNER JOIN ContactPosition cp ON cp.contactID = c.pKey ";
+            sql += "INNER JOIN positions p ON p.pKey = cp.PositionID ";
+            sql += "INNER JOIN groups g ON g.pKey = cp.GroupID ";
+            sql += "WHERE positionName = '" + type + "' ";
+            sql += "AND g.DistKey = " + GlobalVariables.DistKey;
+            if (isDistrict)
+                sql += " AND g.isDistrict = 1";
+            string email = dg.GetScalarString(sql);
+            return email;
         }
 
         private static void SendConfirm(string to)

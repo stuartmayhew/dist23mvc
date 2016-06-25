@@ -21,7 +21,6 @@ namespace Dist23MVC.Models
         public string MapURL { get; set; }
         public string EmbedURL { get; set; }
         public int DistKey { get; set; }
-
-
+        public string Keylist { get; set; }
     }
 }

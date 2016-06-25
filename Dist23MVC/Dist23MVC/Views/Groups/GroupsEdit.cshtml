@@ -17,14 +17,6 @@
         @Html.HiddenFor(model => model.pKey)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DistKey, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DistKey, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DistKey, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.GroupName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })

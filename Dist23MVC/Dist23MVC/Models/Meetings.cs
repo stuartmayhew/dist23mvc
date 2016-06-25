@@ -18,6 +18,6 @@ namespace Dist23MVC.Models
         public int LocationID { get; set; }
         public string city { get; set; }
         public int DistKey { get; set; }
-
+        public string KeyList { get; set; }
     }
 }

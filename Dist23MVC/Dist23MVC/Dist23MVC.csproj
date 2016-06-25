@@ -207,6 +207,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KeyListsController.cs" />
     <Compile Include="Controllers\LinksController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Models\GlobalVariables.cs" />
     <Compile Include="Models\Groups.cs" />
     <Compile Include="Models\GroupViewModel.cs" />
+    <Compile Include="Models\KeyList.cs" />
     <Compile Include="Models\Links.cs" />
     <Compile Include="Models\Locations.cs" />
     <Compile Include="Models\Login.cs" />
@@ -445,6 +447,10 @@
     <Content Include="Views\Payments\PaymentsIndex.cshtml" />
     <Content Include="Views\Payments\PaymentsEdit.cshtml" />
     <Content Include="Views\Shared\_LayoutMeeings.cshtml" />
+    <Content Include="Views\KeyLists\KeyListCreate.cshtml" />
+    <Content Include="Views\KeyLists\KeyListDetails.cshtml" />
+    <Content Include="Views\KeyLists\KeyListEdit.cshtml" />
+    <Content Include="Views\KeyLists\KeyListIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="upload\" />

@@ -43,5 +43,6 @@ namespace Dist23MVC.Models
         public DbSet<PaymentSpecValues> PaymentSpecValues { get; set; }
         public DbSet<Groups> Groups { get; set; }
         public DbSet<Documents> Documents { get; set; }
+        public DbSet<KeyList> KeyList { get; set; }
     }
 }

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Dist23MVC.Models
 {
-    public class GroupViewModel
+    public class KeyList
     {
         [Key]
-        public int pKey { get; set; }
-        public Groups group { get; set; }
-        public Contacts contact { get; set; }
+        public int key_id { get; set; }
+        public int keyNo { get; set; }
+        public string keyDef { get; set; }
+        public int DistKey { get; set; }
     }
 }

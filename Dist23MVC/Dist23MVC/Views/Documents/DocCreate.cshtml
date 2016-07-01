@@ -26,8 +26,8 @@
 
 
         <div class="form-group">
-            @Html.Label("Group")
-            <div class="col-md-10">
+            <div class="col-md-10 pull-right">
+                @Html.Label("Group")
                 @Html.DropDownListFor(model => model.GroupKey, (IEnumerable<SelectListItem>)ViewData["GroupID"])
                 @Html.ValidationMessageFor(model => model.GroupKey, "", new { @class = "text-danger" })
             </div>

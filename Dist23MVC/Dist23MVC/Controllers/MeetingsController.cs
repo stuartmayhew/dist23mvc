@@ -227,6 +227,39 @@ namespace Dist23MVC.Controllers
             ViewData["Day"] = Day;
         }
 
+
+        [HttpPost]
+        public ActionResult UploadSchedule()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                try
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        System.IO.FileInfo fi = new FileInfo(file.FileName);
+                        var ext = fi.Extension;
+                        var fileName = BuildDocFileName(ext, -1);
+                        var path = Path.Combine(Server.MapPath("~/upload/"), fileName);
+                        file.SaveAs(path);
+                        Session["currFile"] = "~/upload/" + fileName;
+                        ViewBag.UploadStatus = "File uploaded successfully";
+                    }
+                }
+                catch
+                {
+                    ViewBag.UploadStatus = "File upload failed. I don't know why. Call Stuart 251 689 1725";
+                }
+            }
+            return View("MeetingsIndex");
+        }
+
+        private string BuildDocFileName(string ext, int id = -1)
+        {
+            return "meetings" + GlobalVariables.DistKey.ToString() + ext;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

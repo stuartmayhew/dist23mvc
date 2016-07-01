@@ -11,6 +11,7 @@
     @Html.ActionLink("Create New", "MeetingCreate")<br/>
     @Html.ActionLink("Public Site", "MeetingsIndex")<br />
     @Html.ActionLink("Setup Key List", "KeyListIndex", "KeyLists")
+
 </p>
 <table class="table">
     <tr>
@@ -67,7 +68,12 @@
         </td>
     </tr>
 }
+
     @Html.ActionLink("Edit Locations","Index","Locations")
-
-
 </table>
+
+@using (Html.BeginForm("UploadSchedule", "Meetings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" />
+    <input type="submit" name="Submit" id="Submit" value="Upload" />
+}

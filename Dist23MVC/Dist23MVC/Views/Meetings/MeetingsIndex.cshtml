@@ -23,13 +23,13 @@
             columns.Bound(p => p.Time).HeaderTemplate("<label for='Time'>Time</label>");
             columns.Bound(p => p.type).HeaderTemplate("<label for='type'>Type</label>");
             columns.Bound(p => p.topic).HeaderTemplate("<label for='topic'>Topic</label>");
+            columns.Bound(p => p.GroupName).HeaderTemplate("<label for='aaGroup'>Group</label>");
+            columns.Bound(p => p.city).HeaderTemplate("<label for='city'>City</label>");
             if (!(bool)Session["isMobile"])
             {
-                columns.Bound(p => p.GroupName).HeaderTemplate("<label for='aaGroup'>Group</label>");
                 columns.Bound(p => p.location).HeaderTemplate("<label for='location'>Location</label>");
+                columns.Bound(p => p.Keylist).HeaderTemplate("<label for='KeyList'>Keys</label>");
             }
-            columns.Bound(p => p.city).HeaderTemplate("<label for='city'>City</label>");
-            columns.Bound(p => p.Keylist).HeaderTemplate("<label for='KeyList'>Keys</label>");
             columns.Bound(p => p.locationID).ClientTemplate("<a href='../Locations/ShowLocation/#=locationID#' target='_blank'>View Map</a>").HeaderTemplate("<label for='gender'>Maps</label>");
         })
         .Groupable()

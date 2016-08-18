@@ -134,7 +134,7 @@ namespace Dist23MVC.Controllers
             ContactPosition cp = db.ContactPosition.Find(id);
             db.ContactPosition.Remove(cp);
             db.SaveChanges();
-            return RedirectToAction("ContactsDetails");
+            return RedirectToAction("ContactsDetails",new { id = cp.ContactID });
         }
 
         protected override void Dispose(bool disposing)

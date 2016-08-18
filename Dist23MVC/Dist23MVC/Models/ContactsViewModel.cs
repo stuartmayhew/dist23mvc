@@ -26,7 +26,7 @@ namespace Dist23MVC.Models
                     PositionViewModel pvm = new PositionViewModel();
                     Positions p = db.Positions.Where(x => x.pKey == pos.PositionID).FirstOrDefault();
                     Groups g = db.Groups.Where(x => x.pKey == pos.GroupID).FirstOrDefault();
-                    pvm.positionKey = p.pKey;
+                    pvm.positionKey = pos.pKey;
                     pvm.PositionName = p.PositionName;
                     pvm.GroupName = g.GroupName;
                     contactPositions.Add(pvm);
